@@ -15,15 +15,18 @@ class inicioSesionController extends Controller
     {
         //
         $usuarios = Usuario::where('email','eguerreroa2@gmail.com')->get();
-        
-        echo '<ul>';
 
-        foreach ($usuarios as  $value) {
-            # code...
-            echo "<li>" . $value->NOMBRE . "</li> ";
+        if(count($usuarios) > 0){
+                echo '<ul>';
+
+            foreach ($usuarios as  $value) {
+                # code...
+                echo "<li>" . $value->NOMBRE . "</li> ";
+            }
+            
+            echo '</ul>';
         }
         
-        echo '</ul>';
        
     }
 
