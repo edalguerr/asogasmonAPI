@@ -7,15 +7,33 @@ use App\models\Usuario;
 
 class inicioSesionController extends Controller
 {
+
+
+    public function index(){
+
+        $usuarios = Usuario::all();
+
+        return response( $usuarios);
+    }
+
     /**
      * verifica los datos de inicio de sesion
      *
      */
-    public function signin()
+    public function signin(Request $request)
     {
         //
-        $usuarios = Usuario::where('email','eguerreroa2@gmail.com')->get();
+        //print_r($request->all());
+        $usuarios = Usuario::where('email',$request->email)->where('contrasenia',$request->contrasenia)->first();
         
+        if(count($usuarios) < 1){
+            
+            return response()->json([
+                'usuario'=> null
+            ]);
+        }
+        
+        /*
         echo '<ul>';
 
         foreach ($usuarios as  $value) {
@@ -23,8 +41,11 @@ class inicioSesionController extends Controller
             echo "<li>" . $value->NOMBRE . "</li> ";
         }
         
-        echo '</ul>';
-       
+        echo '</ul>';*/
+        
+        return response()->json([
+            'usuario'=> $usuarios
+        ]);
     }
 
    
@@ -61,7 +82,7 @@ class inicioSesionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //0
     }
 
     /**
