@@ -16,7 +16,8 @@ class Usuario extends Model
         'apellidos',
         'email',
         'contrasenia',
-        'foto'
+        'foto',
+        'id_token'
     ];
 
 }
