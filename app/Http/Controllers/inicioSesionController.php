@@ -28,21 +28,18 @@ class inicioSesionController extends Controller
     {
         //
         //print_r($request->all());
-
-        
+ 
         //sin el token es diferente de null, hay una sesion activa
         if ($request->id_token != null && $request->id_token != "null") {
 
             //buscando usuario por su token activo
             $usuarios = Usuario::where('id_token', $request->id_token)->first();
-
+            
             //si no econtró ningún token valido
             if (count($usuarios) < 1) {
 
                 return response()->json([
-                    'usuario' => null,
-                    'busqueda' => 'por token fallida',
-                    'token' => $request->id_token 
+                    'usuario' => null                                      
                 ]);
             }
 
@@ -52,35 +49,30 @@ class inicioSesionController extends Controller
             //buscando usuario por su email y contrasenia
             $usuarios = Usuario::where('email', $request->email)->where('contrasenia', $request->contrasenia)->first();
 
-            
-            //si los datos  no coinciden con ningunb usuario
+            //si los datos  no coinciden con ningun usuario
             if (count($usuarios) < 1) {
 
                 return response()->json([
-                    'usuario' => null,
-                    'busqueda' => 'por email fallida'
+                    'usuario' => null
                 ]);
             }
-            
+                        
         }
             
         
         //usuario encontrado, inicio de sesion concedido
         //generamos y actualizamos el token
-        $token = Str::random(60);
-
-        //print_r($usuarios);
-
-        foreach ($usuarios as $user) {
-            # code...
-            echo 'nombre: ' . $user->NOMBRE;
-            //$user->id_token = md5($token);
-        }
+        $token = Str::random(60); 
+        $usuarios->ID_TOKEN = md5($token);
         
+        Usuario::where('ID',$usuarios->ID)->update([
+            'ID_TOKEN' => $usuarios->ID_TOKEN
+        ]);
+        
+        //print_r($userActual);
 
         return response()->json([
-            'usuario' => $usuarios,
-            'busqueda' => 'exitosa'
+            'usuario'  => $usuarios
         ]);
     }
 
@@ -96,14 +88,17 @@ class inicioSesionController extends Controller
         //
         //POR HACER: verificar los datos recibidos y su formato
         $usuario = Usuario::create([
-            'nombre' => $request->input('nombre'),
-            'apellidos' => $request->input('apellidos'),
-            'email' => $request->input('email'),
-            'contrasenia' => md5($request->input('contrasenia')),
-            'foto' => ($request->has('foto') ? $request->input('foto') : 'avatar.png')
+            'NOMBRE' => $request->input('nombre'),
+            'APELLIDOS' => $request->input('apellidos'),
+            'EMAIL' => $request->input('email'),
+            'CONTRASENIA' => md5($request->input('contrasenia')),
+            'FOTO' => ($request->has('foto') ? $request->input('foto') : 'avatar.png')
         ]);
 
-        return $request;
+        return response()->json([
+            'usuario'  => $usuario,
+            'request' => $request
+        ]);
     }
 
 
@@ -117,7 +112,18 @@ class inicioSesionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //0
+        //POR HACER: verificar que campos se van a actualizar                
+        Usuario::where('ID',$id)->update([
+            'NOMBRE' => $request->input('nombre'),
+            'APELLIDOS' => $request->input('apellidos'),
+            'EMAIL' => $request->input('email'),
+            'CONTRASENIA' => md5($request->input('contrasenia')),
+        ]);
+
+        return response()->json([
+            'usuario'  => (Usuario::where('ID',$id)->first()),
+            'request' => $request
+        ]);
     }
 
     /**

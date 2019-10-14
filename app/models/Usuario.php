@@ -8,16 +8,16 @@ class Usuario extends Model
 {
     //
     protected $table = 'usuario';
-    const CREATED_AT = 'creado_en';
-    const UPDATED_AT = 'actualizado_en';
+    const CREATED_AT = 'CREADO_EN';
+    const UPDATED_AT = 'ACTUALIZADO_EN';
     
     protected $fillable = [
-        'nombre',
-        'apellidos',
-        'email',
-        'contrasenia',
-        'foto',
-        'id_token'
+        'NOMBRE',
+        'APELLIDOS',
+        'EMAIL',
+        'CONTRASENIA',
+        'FOTO',
+        'ID_TOKEN'
     ];
 
 }
