@@ -26,3 +26,4 @@ Route::resource('login','inicioSesionController')->except(
 
 
 Route::post('/signin', 'inicioSesionController@signin');
+Route::post('/signin/{email}', 'inicioSesionController@updatePassword');

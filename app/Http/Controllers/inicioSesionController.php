@@ -121,18 +121,32 @@ class inicioSesionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //POR HACER: verificar que campos se van a actualizar                
+        //POR HACER: verificar que campos se van a actualizar 
+        $usuarios = Usuario::where('email', $request->email)->first();
+
+        //si el correo ingresado ya esta en uso
+        if (count($usuarios) >= 1) {
+            return response()->json([
+                'usuario'  => null,
+                'mensaje' => 'Email en uso, intente con otro'
+            ]);
+        }
+        
         Usuario::where('ID', $id)->update([
             'NOMBRE' => $request->input('nombre'),
             'APELLIDOS' => $request->input('apellidos'),
             'EMAIL' => $request->input('email'),
-            'CONTRASENIA' => md5($request->input('contrasenia')),
+            'ID_TOKEN' => md5(Str::random(60))
         ]);
 
         return response()->json([
-            'usuario'  => (Usuario::where('ID', $id)->first()),
-            'request' => $request
+            'usuario'  => (Usuario::where('ID', $id)->first())
         ]);
+    }
+
+
+    public function updatePassword($email){
+
     }
 
     /**
