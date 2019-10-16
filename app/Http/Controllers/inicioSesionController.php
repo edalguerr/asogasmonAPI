@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Usuario;
+use App\models\ResetPassword;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
@@ -24,10 +25,10 @@ class inicioSesionController extends Controller
                     ->from('asogasmontest@gmail.com', 'ASOGASMON')
                     ->subject('Informacion de tu cuenta');
 
-        });*/
-
+        });
         $nombre = "Edwin alberto";
-        Mail::to('eguerreroa2@gmail.com')->send(new PasswordReset($nombre));
+        Mail::to('eguerreroa2@gmail.com')->send(new PasswordReset($nombre));*/
+
     }
 
     /**
@@ -156,10 +157,101 @@ class inicioSesionController extends Controller
     }
 
 
+    /**
+     * 1)Crea el token de enlace que se enviará como parte de la direccion
+     * para reestablecer la contraseña
+     * 2)Enviar email con direccion de enlace para resetear la contraseña     
+     */
+    public function resetPassword(Request $request){
+
+        $usuario = Usuario::where('email', $request->email)->first();
+
+       
+        //si no se encontró el usuario
+        if(count($usuario) < 1){
+            return response()->json([
+                'usuario' => null
+            ]);
+        }
+
+        
+        //generamos el token de enlace y actualizamos o creamos el registro para la 
+        //tabla reset password 
+        $token_enlace = md5(Str::random(60));        
+        $resets = ResetPassword::where('email', $request->email)->first();
+
+        //si no hay enlaces generados, crea uno
+        if(count($resets) < 1){
+            
+            ResetPassword::create([
+                'EMAIL' =>  $request->email,
+                'TOKEN_ENLACE' => $token_enlace 
+            ]);
+
+        }
+        //si hay enlaces generados, lo actualiza
+        else{
+
+            ResetPassword::where('email',  $request->email)->update([
+                'EMAIL' =>  $request->email,
+                'TOKEN_ENLACE' => $token_enlace            
+            ]);
+        }
+     
+        
+        //enviamos el email 
+        $nombre = $usuario->NOMBRE;
+        Mail::to($request->email)->send(new PasswordReset($nombre, $token_enlace));
+
+        return response()->json([
+            'usuario' => "Email enviado"
+        ]);
+    }
+
+
+    /**
+     * Actualizar contraseña de usuario
+     */
     public function updatePassword(Request $request){
         //actualiza la contraseña de usuario
-        //enviara un enlace formado por uina direccion + un hash en ella
-        //en el cual facilitara el reestablecimiento de la contraseña
+        //usando el token y la tabla reset_password
+
+        $usuario = Usuario::where('email', $request->email)->first();
+        
+        //si no se encontró el usuario
+        if(count($usuario) < 1){
+            return response()->json([
+                'usuario' => null
+            ]);
+        }
+
+        //buscamos el token en la tabla reset_password
+        $resets = ResetPassword::where('email', $request->email)->where('token_enlace',$request->token)->first();
+
+        //si no se encuentra el token de enlace
+        if(count($resets) < 1){
+            return response()->json([
+                'usuario' => null
+            ]);
+        }       
+        
+        //ACTUALIZA LA CONTRASEÑA DE USUARIO
+        Usuario::where('email', $request->email)->update([
+            'CONTRASENIA' => $request->input('contrasenia')
+        ]);
+
+        //ELIMINAMOS EL TOKEN DE ENLACE DE LA TABLA reset_password
+        ResetPassword::where('email', $request->email)->where('token_enlace',$request->token)->delete();
+
+        return response()->json([
+            'usuario'  => "Contraseña de usuario actualizada"
+        ]);
+    }
+
+
+    public function indexToken(Request $request, $token){
+        echo "exito<br>";
+        echo 'Correcto: ' . $token;
     }
 
     /**
@@ -172,4 +264,5 @@ class inicioSesionController extends Controller
     {
         //
     }
+
 }

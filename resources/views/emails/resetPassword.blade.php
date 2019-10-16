@@ -5,7 +5,7 @@
 </p>
 
 <p>
-    <a href="www.google.com" target="_blank" >www.google.com</a>
+    <a href="{{ url("api/logon/{$token}") }}">Modificar contraseña</a>
 </p>
 
 <p>

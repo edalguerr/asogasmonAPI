@@ -26,4 +26,8 @@ Route::resource('login','inicioSesionController')->except(
 
 
 Route::post('/signin', 'inicioSesionController@signin');
-Route::post('/signin/{email}', 'inicioSesionController@updatePassword');
+
+Route::post('/signin/update', 'inicioSesionController@updatePassword');
+Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
+
+Route::get('/logon/{token}', 'inicioSesionController@indexToken');
