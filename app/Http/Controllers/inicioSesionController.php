@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\Usuario;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Message;
+use App\Mail\PasswordReset;
 
 class inicioSesionController extends Controller
 {
@@ -13,10 +15,19 @@ class inicioSesionController extends Controller
 
     public function index()
     {
-
+        /*
         $usuarios = Usuario::all();
 
         return response($usuarios);
+        Mail::send('emails.resetPassword',['nombre' => 'ASOGASMON'], function(Message $message){
+            $message->to('eguerreroa2@gmail.com','Edwin Alberto')
+                    ->from('asogasmontest@gmail.com', 'ASOGASMON')
+                    ->subject('Informacion de tu cuenta');
+
+        });*/
+
+        $nombre = "Edwin alberto";
+        Mail::to('eguerreroa2@gmail.com')->send(new PasswordReset($nombre));
     }
 
     /**
@@ -145,8 +156,10 @@ class inicioSesionController extends Controller
     }
 
 
-    public function updatePassword($email){
-
+    public function updatePassword(Request $request){
+        //actualiza la contraseña de usuario
+        //enviara un enlace formado por uina direccion + un hash en ella
+        //en el cual facilitara el reestablecimiento de la contraseña
     }
 
     /**
