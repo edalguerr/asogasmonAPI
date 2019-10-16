@@ -14,17 +14,18 @@ class PasswordReset extends Mailable
     public $subject ='Reestablecimiento de contraseña';
     public $nombreDestinatario;
     public $token;
-
+    public $email;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nombre, $token_enlace)
+    public function __construct($nombre, $token_enlace, $emailTo)
     {
         //
         $this->nombreDestinatario = $nombre;
         $this->token = $token_enlace;
+        $this->email = $emailTo;
     }
 
     /**

@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('login','inicioSesionController')->except(
     [
-        'create','edit','show'
+        'index','create','edit','show'
     ]
 );
 
@@ -30,4 +30,4 @@ Route::post('/signin', 'inicioSesionController@signin');
 Route::post('/signin/update', 'inicioSesionController@updatePassword');
 Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
 
-Route::get('/logon/{token}', 'inicioSesionController@indexToken');
+//Route::get('/logon/{token}', 'inicioSesionController@indexToken');

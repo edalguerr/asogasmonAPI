@@ -5,7 +5,8 @@
 </p>
 
 <p>
-    <a href="{{ url("api/logon/{$token}") }}">Modificar contraseña</a>
+    <!--<a href="{{ url("api/logon/{$token}") }}">Modificar contraseña</a>-->
+    <a href="localhost/reset/{{$email}}/resetPass/{{$token}}">Modificar contraseña</a>
 </p>
 
 <p>

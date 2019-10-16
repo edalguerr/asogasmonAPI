@@ -201,7 +201,8 @@ class inicioSesionController extends Controller
         
         //enviamos el email 
         $nombre = $usuario->NOMBRE;
-        Mail::to($request->email)->send(new PasswordReset($nombre, $token_enlace));
+        $emailTo = $request->email;
+        Mail::to($request->email)->send(new PasswordReset($nombre, $token_enlace, $emailTo));
 
         return response()->json([
             'usuario' => "Email enviado"
