@@ -18,16 +18,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
 
+/**********************************************************
+ ***************** INICIO DE SESION ***********************
+ * ********************************************************
+ */
 Route::resource('login','inicioSesionController')->except(
     [
-        'index','create','edit','show'
+        'index','create','edit','show','destroy'
     ]
 );
 
-
 Route::post('/signin', 'inicioSesionController@signin');
-
 Route::post('/signin/update', 'inicioSesionController@updatePassword');
 Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
 
-//Route::get('/logon/{token}', 'inicioSesionController@indexToken');
+
+/**********************************************************
+ ***************** OFERTA ARTICULO ***********************
+ * ********************************************************
+ */
+
+Route::resource('ofertaArticulo','OfertaArticulo')->except(
+    [
+        'create','edit'
+    ]
+);

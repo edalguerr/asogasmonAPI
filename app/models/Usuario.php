@@ -3,6 +3,7 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\models\OfertaArticulo;
 
 class Usuario extends Model
 {
@@ -19,5 +20,9 @@ class Usuario extends Model
         'FOTO',
         'ID_TOKEN'
     ];
+
+    public function ofertasArticulo(){
+        return $this->hasMany(OfertaArticulo::class,'USUARIO_ID','ID');
+    }
 
 }

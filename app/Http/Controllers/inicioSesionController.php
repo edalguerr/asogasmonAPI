@@ -7,29 +7,13 @@ use App\models\Usuario;
 use App\models\ResetPassword;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Mail\Message;
 use App\Mail\PasswordReset;
+
+
 
 class inicioSesionController extends Controller
 {
 
-
-    public function index()
-    {
-        /*
-        $usuarios = Usuario::all();
-
-        return response($usuarios);
-        Mail::send('emails.resetPassword',['nombre' => 'ASOGASMON'], function(Message $message){
-            $message->to('eguerreroa2@gmail.com','Edwin Alberto')
-                    ->from('asogasmontest@gmail.com', 'ASOGASMON')
-                    ->subject('Informacion de tu cuenta');
-
-        });
-        $nombre = "Edwin alberto";
-        Mail::to('eguerreroa2@gmail.com')->send(new PasswordReset($nombre));*/
-
-    }
 
     /**
      * POR HACER:
@@ -249,21 +233,5 @@ class inicioSesionController extends Controller
         ]);
     }
 
-
-    public function indexToken(Request $request, $token){
-        echo "exito<br>";
-        echo 'Correcto: ' . $token;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
+    
 }
