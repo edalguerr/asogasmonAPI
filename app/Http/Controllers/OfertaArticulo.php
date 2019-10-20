@@ -105,4 +105,5 @@ class OfertaArticulo extends Controller
     {
         //
     }
+    
 }

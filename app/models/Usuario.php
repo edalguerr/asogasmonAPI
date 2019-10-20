@@ -4,6 +4,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\models\OfertaArticulo;
+use App\models\OfertaCasaApto;
 
 class Usuario extends Model
 {
@@ -25,4 +26,8 @@ class Usuario extends Model
         return $this->hasMany(OfertaArticulo::class,'USUARIO_ID','ID');
     }
 
+    public function ofertasCasaApto(){
+        return $this->hasMany(OfertaCasaApto::class,'USUARIO_ID','ID');
+    }
+    
 }

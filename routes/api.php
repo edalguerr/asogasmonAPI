@@ -40,6 +40,18 @@ Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
 
 Route::resource('ofertaArticulo','OfertaArticulo')->except(
     [
-        'create','edit'
+        'create','edit','update','destroy','show'
+    ]
+);
+
+
+/**********************************************************
+ ***************** OFERTA CASA_APTO ***********************
+ * ********************************************************
+ */
+
+Route::resource('ofertaCasaApto','OfertaCasaAptoController')->except(
+    [
+        'create','edit','update','destroy','show'
     ]
 );
