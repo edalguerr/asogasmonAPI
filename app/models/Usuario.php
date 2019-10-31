@@ -4,8 +4,8 @@ namespace App\models;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Passport\HasApiTokens;
-
+use App\models\OfertaArticulo;
+use App\models\OfertaCasaApto;
 
 class Usuario extends Model
 {
@@ -13,15 +13,24 @@ class Usuario extends Model
     use HasApiTokens;
     
     protected $table = 'usuario';
-    const CREATED_AT = 'creado_en';
-    const UPDATED_AT = 'actualizado_en';
+    const CREATED_AT = 'CREADO_EN';
+    const UPDATED_AT = 'ACTUALIZADO_EN';
     
     protected $fillable = [
-        'nombre',
-        'apellidos',
-        'email',
-        'contrasenia',
-        'foto'
+        'NOMBRE',
+        'APELLIDOS',
+        'EMAIL',
+        'CONTRASENIA',
+        'FOTO',
+        'ID_TOKEN'
     ];
 
+    public function ofertasArticulo(){
+        return $this->hasMany(OfertaArticulo::class,'USUARIO_ID','ID');
+    }
+
+    public function ofertasCasaApto(){
+        return $this->hasMany(OfertaCasaApto::class,'USUARIO_ID','ID');
+    }
+    
 }
