@@ -30,6 +30,7 @@ Route::resource('login','inicioSesionController')->except(
 
 Route::post('/signin', 'inicioSesionController@signin');
 Route::post('/signin/update', 'inicioSesionController@updatePassword');
+Route::post('/signin/updateAvatar', 'inicioSesionController@updateAvatar');
 Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
 
 

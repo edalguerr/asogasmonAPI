@@ -10,7 +10,6 @@ use App\models\OfertaCasaApto;
 class Usuario extends Model
 {
     //
-    use HasApiTokens;
     
     protected $table = 'usuario';
     const CREATED_AT = 'CREADO_EN';
