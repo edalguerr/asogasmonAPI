@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Response;
 use Image;
 
 
-
 class inicioSesionController extends Controller
 {
 
@@ -86,6 +85,8 @@ class inicioSesionController extends Controller
         //
         //POR HACER: verificar los datos recibidos y su formato
         $usuarios = Usuario::where('email', $request->email)->first();
+        //POR HACER: Definir imagen por defecto y su nombre
+        $imgDefecto = 'avatar.jpg';
 
         //si el correo ingresado ya esta en uso
         if (count($usuarios) >= 1) {
@@ -100,7 +101,7 @@ class inicioSesionController extends Controller
             'APELLIDOS' => $request->input('apellidos'),
             'EMAIL' => $request->input('email'),
             'CONTRASENIA' => $request->input('contrasenia'),
-            'FOTO' => ($request->has('foto') ? $request->input('foto') : 'avatar.png'),
+            'FOTO' => ($request->has('foto') ? $request->input('foto') : $imgDefecto),
             'ID_TOKEN' => md5(Str::random(60))
         ]);
 
@@ -279,13 +280,39 @@ class inicioSesionController extends Controller
             'FOTO' => $temp_name
         ]);
         
-        /**/
         $dirImagen = $ruta .  $temp_name;
-        //$ruta = public_path() . '\img\user\\' .$request->input('id') . '\\';
-        //$imagenes = Storage::files($ruta);
-
+        
         return Image::make($dirImagen)->response('webp',30);
          
+    }
+
+    /**
+     * Obtener foto de perfil de usuario
+     */
+    public function avatar(Request $request){
+
+        $user = Usuario::where('ID', $request->input('id'))->first();
+        //POR HACER: Definir imagen por defecto y su nombre
+        $imgDefecto = 'avatar.jpg';
+
+        if ($user == null) {
+            return response()->json([
+                'usuario'  => null
+            ]);
+        }
+
+        // ruta de las imagen guardadas
+        $ruta = public_path() . '/img/user/' . $request->input('id') . '/';
+        $temp_name = $user->FOTO;
+        $dirImagen = $ruta . $temp_name;
+
+        //POR HACER:
+        //en caso que el avatar sea por defecto, se envia la imagen por defecto, la ruta es diferente
+        if($temp_name == $imgDefecto || $temp_name == 'avatar.png') {
+            return null;
+        }
+
+        return Image::make($dirImagen)->response('webp',30);
     }
 
     /**
