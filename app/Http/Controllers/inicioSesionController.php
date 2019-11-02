@@ -282,12 +282,14 @@ class inicioSesionController extends Controller
         
         $dirImagen = $ruta .  $temp_name;
         
-        return Image::make($dirImagen)->response('webp',30);
-         
+        //return Image::make($dirImagen)->response('webp',30);
+        return response()->json([
+            'foto' => $temp_name
+        ]);
     }
 
     /**
-     * Obtener foto de perfil de usuario
+     * Obtener foto de perfil de usuario (NO SE USA)
      */
     public function avatar(Request $request){
 
@@ -312,6 +314,8 @@ class inicioSesionController extends Controller
             return null;
         }
 
+        //$image = base64_encode(Image::make($dirImagen)->response('webp',30));
+        //return $image;
         return Image::make($dirImagen)->response('webp',30);
     }
 
