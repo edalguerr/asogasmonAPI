@@ -132,7 +132,6 @@ class OfertaArticulo extends Controller
     }
 
 
-
     /**
      * Display the specified resource.
      *

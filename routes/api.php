@@ -46,6 +46,12 @@ Route::resource('ofertaArticulo','OfertaArticulo')->except(
     ]
 );
 
+/**********************************************************
+ ***********CATEGORIAS Y SUBCATEGORIAS DE ARTICULOS********
+ **********************************************************
+ */
+
+ Route::post('categoriasArticulo','CategoriaController@index');
 
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
