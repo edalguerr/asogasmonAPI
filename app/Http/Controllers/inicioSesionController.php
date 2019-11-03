@@ -8,8 +8,6 @@ use App\models\ResetPassword;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PasswordReset;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 
 use Image;
 
@@ -269,7 +267,7 @@ class inicioSesionController extends Controller
         $imagen = Image::make($imagenOriginal)->encode('webp');
 
         // generar un nombre aleatorio para la imagen
-        $temp_name = $this->random_string() . '.webp'; //. $imagenOriginal->getClientOriginalExtension();
+        $temp_name = $this->random_string() . '.webp';
 
         // guardar imagen
         // save( [ruta], [calidad])
@@ -333,4 +331,5 @@ class inicioSesionController extends Controller
 
         return $key;
     }
+
 }
