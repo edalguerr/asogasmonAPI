@@ -16,7 +16,8 @@ class UbicacionOfertaArticulo extends Model
         'OFERTA_ARTICULO_ID',
         'PAIS',
         'DEPARTAMENTO',
-        'CIUDAD'
+        'CIUDAD',
+        'LOCALIDAD'
     ];
 
     public function oferta(){

@@ -51,8 +51,9 @@ class OfertaArticulo extends Controller
         UbicacionOfertaArticulo::create([
             'OFERTA_ARTICULO_ID' =>  $oferta->id,
             'PAIS' => $request->input('pais'),
-            'DEPARTAMENTO' => $request->input('departamento'),
-            'CIUDAD' => $request->input('ciudad')
+            'DEPARTAMENTO' => ($request->has('departamento') ? $request->input('departamento') : null),
+            'CIUDAD' => ($request->has('ciudad') ? $request->input('ciudad') : null),
+            'LOCALIDAD' => ($request->has('localidad') ? $request->input('localidad') : null)
         ]);
 
 
