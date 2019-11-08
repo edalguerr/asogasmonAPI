@@ -16,6 +16,7 @@ class UbicacionOfertaCasaApto extends Model
         'PAIS',
         'DEPARTAMENTO',
         'CIUDAD',
+        'LOCALIDAD',
         'DIRECCION',
         'CODIGO_POSTAL',
         'OFERTA_CASA_APTO_ID'

@@ -57,30 +57,45 @@ class OfertaCasaAptoController extends Controller
 
         UbicacionOfertaCasaApto::create([
             'PAIS' => $request->input('pais'),
-            'DEPARTAMENTO' => $request->input('departamento'),
-            'CIUDAD' => $request->input('ciudad'),
-            'DIRECCION' => $request->input('direccion'),
-            'CODIGO_POSTAL' => $request->input('codigoPostal'),
+            'DEPARTAMENTO'
+            => (
+                $request->has('departamento') ? $request->input('departamento') : null
+            ),
+            'CIUDAD' 
+            => ($request->has('ciudad') ? $request->input('ciudad') : null),
+            'LOCALIDAD' 
+            => (
+                $request->has('localidad') ? $request->input('localidad') 
+                : null
+            ),
+            'DIRECCION'  
+            => (
+                $request->has('direccion') ? $request->input('direccion') 
+                : null
+            ),
+            'CODIGO_POSTAL'  
+            => (
+                $request->has('codigoPostal') ? $request->input('codigoPostal') : null
+            ),
             'OFERTA_CASA_APTO_ID' => $oferta->id
         ]);
 
-        
+
         //Guardamos fotos
         $this->fotosCasaApto($request, $oferta->id);
 
         //almacenando los servicios especificos
         $cantServicios = $request->input('cantServicios');
 
-        for ($i=0; $i < $cantServicios ; $i++) { 
-            
+        for ($i = 0; $i < $cantServicios; $i++) {
+
             ServicioEspecificoOfertaCasaApto::create([
-                'SERVICIO_ESPECIFICO_ID' 
+                'SERVICIO_ESPECIFICO_ID'
                 => $request->input('servicioEspecifico' . $i),
                 'OFERTA_CASA_APTO_ID' => $oferta->id
             ]);
-
         }
-        
+
 
         $ofertaN =  OfertaCasaApto::find($oferta->id);
         $ofertaN->usuario;
