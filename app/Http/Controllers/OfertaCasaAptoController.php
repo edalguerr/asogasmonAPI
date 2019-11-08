@@ -9,6 +9,10 @@ use App\models\FotoCasaApto;
 use App\models\ServicioEspecifico;
 use App\models\ServicioEspecificoOfertaCasaApto;
 
+use Image;
+
+use function PHPSTORM_META\type;
+
 class OfertaCasaAptoController extends Controller
 {
     /**
@@ -20,7 +24,7 @@ class OfertaCasaAptoController extends Controller
     {
         //
         $ofertas =  OfertaCasaApto::all();
-        
+
         return response()->json([
             'ofertasCasaApto' => $ofertas
         ]);
@@ -60,19 +64,23 @@ class OfertaCasaAptoController extends Controller
             'OFERTA_CASA_APTO_ID' => $oferta->id
         ]);
 
-        //POR HACER: averiguar como almacenar fotos en php
-        //POR HACER: verificar cuantas fotos agrego el usuario y meter esta accion en un ciclo
-        FotoCasaApto::create([
-            'FOTO' => 'fotos/casaApto/usuario/3/foto2.jpg',
-            'OFERTA_CASA_APTO_ID' => $oferta->id
-        ]);
+        
+        //Guardamos fotos
+        $this->fotosCasaApto($request, $oferta->id);
 
-        //POR HACER: verificar cuantos servicios especificios selecciono el usuario y 
-        //meter esta accion en un ciclo para que relacione todos los servicios correspondientes a la oferta
-        ServicioEspecificoOfertaCasaApto::create([
-            'SERVICIO_ESPECIFICO_ID' => 1,
-            'OFERTA_CASA_APTO_ID' => $oferta->id
-        ]);
+        //almacenando los servicios especificos
+        $cantServicios = $request->input('cantServicios');
+
+        for ($i=0; $i < $cantServicios ; $i++) { 
+            
+            ServicioEspecificoOfertaCasaApto::create([
+                'SERVICIO_ESPECIFICO_ID' 
+                => $request->input('servicioEspecifico' . $i),
+                'OFERTA_CASA_APTO_ID' => $oferta->id
+            ]);
+
+        }
+        
 
         $ofertaN =  OfertaCasaApto::find($oferta->id);
         $ofertaN->usuario;
@@ -84,6 +92,67 @@ class OfertaCasaAptoController extends Controller
             'ofertasCasaApto' => $ofertaN
         ]);
     }
+
+
+
+    /**
+     * genera cadena string, de tamaño 10, con caracteres alfanuméricos 
+     * aleatorios      
+     */
+    protected function random_string()
+    {
+        $key = '';
+        $keys = array_merge(range('a', 'z'), range(0, 9));
+
+        for ($i = 0; $i < 10; $i++) {
+            $key .= $keys[array_rand($keys)];
+        }
+
+        return $key;
+    }
+
+
+    /**
+     * Funcion para obtener imagenes de la oferta y guardarlas
+     */
+    private function fotosCasaApto(Request $request, $id_oferta)
+    {
+
+        //verificamos si la carpeta no existe, si no es asi creamos una
+        $carpeta = public_path() . '/img/ofertasCasaApto/' . $id_oferta;
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+
+        // ruta de las imagenes guardadas
+        $ruta = public_path() . '/img/ofertasCasaApto/' . $id_oferta . '/';
+
+        // cantidad de imagenes recibidas
+        $cantImg = $request->input('cantImg');
+
+        // recogida de imagenes recibidas 
+        for ($i = 0; $i < $cantImg; $i++) {
+
+            $imagenOriginal = $request->file('foto' . $i);
+
+            // crear instancia de imagen
+            $imagen = Image::make($imagenOriginal)->encode('webp');
+
+            // generar un nombre aleatorio para la imagen
+            $temp_name = $this->random_string() . '.webp';
+
+            // guardar imagen
+            // save( [ruta], [calidad])
+            $imagen->save($ruta . $temp_name, 30);
+
+            FotoCasaApto::create([
+                'FOTO' => $temp_name,
+                'OFERTA_CASA_APTO_ID' => $id_oferta
+            ]);
+        }
+    }
+
+
 
     /**
      * Display the specified resource.

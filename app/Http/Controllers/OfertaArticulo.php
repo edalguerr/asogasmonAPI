@@ -122,8 +122,7 @@ class OfertaArticulo extends Controller
             // save( [ruta], [calidad])
             $imagen->save($ruta . $temp_name, 30);
 
-            //POR HACER:
-            //ALMACENAR NOMBRE DE LAS FOTOS EN LA BASE DE DATOS
+            
             FotoArticulo::create([
                 'FOTO' => $temp_name,
                 'OFERTA_ARTICULO_ID' => $id_articulo
