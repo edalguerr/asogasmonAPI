@@ -22,9 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  ***************** INICIO DE SESION ***********************
  * ********************************************************
  */
-Route::resource('login','inicioSesionController')->except(
+Route::resource('login', 'inicioSesionController')->except(
     [
-        'index','create','edit','show','destroy'
+        'index', 'create', 'edit', 'show', 'destroy'
     ]
 );
 
@@ -40,26 +40,32 @@ Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
  * ********************************************************
  */
 
-Route::resource('ofertaArticulo','OfertaArticulo')->except(
+Route::resource('ofertaArticulo', 'OfertaArticulo')->except(
     [
-        'create','edit','update','destroy','show'
+        'create', 'edit', 'update', 'destroy', 'show'
     ]
 );
 
 /**********************************************************
  ***********CATEGORIAS Y SUBCATEGORIAS DE ARTICULOS********
  **********************************************************
- */
+*/
+Route::post('categoriasArticulo', 'CategoriaController@index');
 
- Route::post('categoriasArticulo','CategoriaController@index');
+/**********************************************************
+ *****************SERVICIOS ESPECIFICOS********************
+ **********************************************************
+*/
+Route::post('serviciosEspecificos', 'ServicioEspecificoController@servicios');
+
 
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
  * ********************************************************
  */
 
-Route::resource('ofertaCasaApto','OfertaCasaAptoController')->except(
+Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
     [
-        'create','edit','update','destroy','show'
+        'create', 'edit', 'update', 'destroy', 'show'
     ]
 );
