@@ -49,22 +49,33 @@ Route::resource('ofertaArticulo', 'OfertaArticulo')->except(
 /**********************************************************
  ***********CATEGORIAS Y SUBCATEGORIAS DE ARTICULOS********
  **********************************************************
-*/
+ */
 Route::post('categoriasArticulo', 'CategoriaController@index');
 
 /**********************************************************
  *****************SERVICIOS ESPECIFICOS********************
  **********************************************************
-*/
+ */
 Route::post('serviciosEspecificos', 'ServicioEspecificoController@servicios');
 
 
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
  * ********************************************************
- */
+*/
 
 Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
+    [
+        'create', 'edit', 'update', 'destroy', 'show'
+    ]
+);
+
+/**********************************************************
+ ***************** OFERTA HABITACION ***********************
+ * ********************************************************
+*/
+
+Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
     [
         'create', 'edit', 'update', 'destroy', 'show'
     ]
