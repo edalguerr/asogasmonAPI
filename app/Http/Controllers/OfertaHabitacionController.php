@@ -7,6 +7,7 @@ use App\models\OfertaHabitacion;
 use App\models\UbicacionOfertaHabitacion;
 use App\models\ServicioEspecificoOfertaHabitacion;
 use App\models\FotoHabitacion;
+use App\models\NormaCasaOfertaHabitacion;
 
 use Image;
 
@@ -20,15 +21,9 @@ class OfertaHabitacionController extends Controller
     public function index()
     {
         //
-        $oferta = OfertaHabitacion::findOrFail(8);
-        $oferta->usuario;
-        $oferta->ubicacion;
-        $oferta->serviciosEspecificos;
-        $oferta->fotos;
-
-        //OfertaHabitacion::all()
+        
         return response()->json([
-            'ofertasHabitacion' => $oferta
+            'ofertasHabitacion' => OfertaHabitacion::all()
         ]);
     }
 
@@ -92,8 +87,27 @@ class OfertaHabitacionController extends Controller
             ]);
         }
 
+        //almacenamos noramas de la casa
+        $cantNormas = $request->input('cantNormas');
+
+        for ($i = 0; $i < $cantNormas; $i++) {
+
+            NormaCasaOfertaHabitacion::create([
+                'NORMA_CASA_ID'
+                => $request->input('normaCasa' . $i),
+                'OFERTA_HABITACION_ID' => $oferta->id
+            ]);
+        }
+
+        $ofertaN = OfertaHabitacion::find($oferta->id);
+        $ofertaN->usuario;
+        $ofertaN->ubicacion;
+        $ofertaN->serviciosEspecificos;
+        $ofertaN->fotos;
+        $ofertaN->normasCasa;
+
         return response()->json([
-            'ofertasHabitacion' => $oferta
+            'ofertasHabitacion' => $ofertaN
         ]);
     }
 
