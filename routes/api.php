@@ -58,6 +58,12 @@ Route::post('categoriasArticulo', 'CategoriaController@index');
  */
 Route::post('serviciosEspecificos', 'ServicioEspecificoController@servicios');
 
+/**********************************************************
+ *****************NORMAS DE LA CASA************************
+ **********************************************************
+ */
+Route::post('normasCasa', 'NormaCasaController@normas');
+
 
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
