@@ -67,7 +67,7 @@ Route::post('normasCasa', 'NormaCasaController@normas');
 
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
- * ********************************************************
+ **********************************************************
 */
 
 Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
@@ -77,8 +77,8 @@ Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
 );
 
 /**********************************************************
- ***************** OFERTA HABITACION ***********************
- * ********************************************************
+ ***************** OFERTA HABITACION **********************
+ **********************************************************
 */
 
 Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
