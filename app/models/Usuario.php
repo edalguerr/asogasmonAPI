@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\models\OfertaArticulo;
 use App\models\OfertaCasaApto;
 use App\models\OfertaHabitacion;
+use App\models\OfertaPension;
 
 class Usuario extends Model
 {
@@ -35,6 +36,10 @@ class Usuario extends Model
 
     public function ofertasHabitacion(){
         return $this->hasMany(OfertaHabitacion::class,'USUARIO_ID','ID');
+    }
+
+    public function ofertasPension(){
+        return $this->hasMany(OfertaPension::class,'USUARIO_ID','ID');
     }
     
 }

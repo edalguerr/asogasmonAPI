@@ -86,3 +86,14 @@ Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
         'create', 'edit', 'update', 'destroy', 'show'
     ]
 );
+
+/**********************************************************
+ ***************** OFERTA PENSION **********************
+ **********************************************************
+*/
+
+Route::resource('ofertaPension', 'OfertaPensionController')->except(
+    [
+        'create', 'edit', 'update', 'destroy', 'show'
+    ]
+);

@@ -5,6 +5,7 @@ namespace App\models;
 use Illuminate\Database\Eloquent\Model;
 use App\models\OfertaCasaApto;
 use App\models\OfertaHabitacion;
+use App\models\OfertaPension;
 
 class ServicioEspecifico extends Model
 {
@@ -27,6 +28,12 @@ class ServicioEspecifico extends Model
     public function ofertasHabitacion(){
         return $this->belongsToMany(OfertaHabitacion::class,'servicio_especifico_has_oferta_habitacion',
         'SERVICIO_ESPECIFICO_ID','OFERTA_HABITACION_ID','ID','ID')
+        ->withPivot('CREADO_EN','ACTUALIZADO_EN');        
+    }
+
+    public function ofertasPension(){
+        return $this->belongsToMany(OfertaPension::class,'servicio_especifico_has_oferta_pension',
+        'SERVICIO_ESPECIFICO_ID','OFERTA_PENSION_ID','ID','ID')
         ->withPivot('CREADO_EN','ACTUALIZADO_EN');        
     }
 

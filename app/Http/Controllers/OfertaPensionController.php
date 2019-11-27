@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\OfertaHabitacion;
-use App\models\UbicacionOfertaHabitacion;
-use App\models\ServicioEspecificoOfertaHabitacion;
-use App\models\FotoHabitacion;
-use App\models\NormaCasaOfertaHabitacion;
+use App\models\OfertaPension;
+use App\models\UbicacionOfertaPension;
+use App\models\Usuario;
+use App\models\FotoPension;
+use App\models\ServicioEspecificoOfertaPension;
+use App\models\NormaCasaOfertaPension;
+
 
 use Image;
 
-class OfertaHabitacionController extends Controller
+class OfertaPensionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +23,18 @@ class OfertaHabitacionController extends Controller
     public function index()
     {
         //
-        
+        $oferta = OfertaPension::find(7);
+        $oferta->usuario;
+        $oferta->ubicacion;
+        $oferta->fotos;
+        $oferta->serviciosEspecificos;
+        $oferta->normasCasa;
+        //$oferta->oferta;
+
         return response()->json([
-            'ofertasHabitacion' => OfertaHabitacion::all()
+            'ofertasPension' => $oferta
         ]);
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -38,23 +45,22 @@ class OfertaHabitacionController extends Controller
     public function store(Request $request)
     {
         //
-        $oferta = OfertaHabitacion::create([
-            'AMOBLADA' => $request->input('amoblada'),
-            'TIPO_HABITACION' => $request->input('tipoHabitacion'),
-            'BANIO_INTERNO' => $request->input('banioInterno'),
+        $oferta = OfertaPension::create([
+            'HABITACIONES_DISPONIBLES' => $request->input('habitacionesDisponibles'),
+            'HABITACIONES_INDIVIDUALES' => $request->input('habitacionesIndividuales'),
+            'HABITACIONES_COMPARTIDAS' => $request->input('habitacionesCompartidas'),
+            'NUM_HABITANTES' => $request->input('numHabitantes'),
+            'HABITACIONES_BANIO_INTERNO' => $request->input('habitacionesBanioInterno'),
             'GENERO_ADMITIDO' => $request->input('genero'),
             'ALIMENTACION_INCLUIDA' => $request->input('alimentacion'),
-            'AREA_INMUEBLE' => $request->input('area'),
-            'ESTANCIA_MINIMA' => $request->input('estanciaMinima'),
-            'NUM_HABITANTES' => $request->input('numHabitantes'),
-            'NUMERO_CELULAR' => $request->input('celular'),
             'PRECIO_MENSUAL' => $request->input('precio'),
+            'NUM_CELULAR' => $request->input('celular'),
             'TITULO_AVISO' => $request->input('tituloAviso'),
-            'DESCRIPCION' => $request->input('descripcion'),
+            'DESCRIPCION_AVISO' => $request->input('descripcion'),
             'USUARIO_ID' => $request->input('usuario')
         ]);
 
-        UbicacionOfertaHabitacion::create([
+        UbicacionOfertaPension::create([
             'PAIS' => $request->input('pais'),
             'DEPARTAMENTO'
             => ($request->has('departamento') ? $request->input('departamento') : null),
@@ -68,22 +74,21 @@ class OfertaHabitacionController extends Controller
                 : null),
             'CODIGO_POSTAL'
             => ($request->has('codigoPostal') ? $request->input('codigoPostal') : null),
-            'OFERTA_HABITACION_ID' => $oferta->id
+            'OFERTA_PENSION_ID' => $oferta->id
         ]);
 
-
         //Guardamos fotos
-        $this->fotosHabitacion($request, $oferta->id);
+        $this->fotosPension($request, $oferta->id);
 
         //almacenando los servicios especificos
         $cantServicios = $request->input('cantServicios');
 
         for ($i = 0; $i < $cantServicios; $i++) {
 
-            ServicioEspecificoOfertaHabitacion::create([
+            ServicioEspecificoOfertaPension::create([
                 'SERVICIO_ESPECIFICO_ID'
                 => $request->input('servicioEspecifico' . $i),
-                'OFERTA_HABITACION_ID' => $oferta->id
+                'OFERTA_PENSION_ID' => $oferta->id
             ]);
         }
 
@@ -92,24 +97,14 @@ class OfertaHabitacionController extends Controller
 
         for ($i = 0; $i < $cantNormas; $i++) {
 
-            NormaCasaOfertaHabitacion::create([
+            NormaCasaOfertaPension::create([
                 'NORMA_CASA_ID'
                 => $request->input('normaCasa' . $i),
-                'OFERTA_HABITACION_ID' => $oferta->id
+                'OFERTA_PENSION_ID' => $oferta->id
             ]);
         }
-
-        $ofertaN = OfertaHabitacion::find($oferta->id);
-        $ofertaN->usuario;
-        $ofertaN->ubicacion;
-        $ofertaN->serviciosEspecificos;
-        $ofertaN->fotos;
-        $ofertaN->normasCasa;
-
-        return response()->json([
-            'ofertasHabitacion' => $ofertaN
-        ]);
     }
+
 
     /**
      * genera cadena string, de tamaño 10, con caracteres alfanuméricos 
@@ -131,17 +126,17 @@ class OfertaHabitacionController extends Controller
     /**
      * Funcion para obtener imagenes de la oferta y guardarlas
      */
-    private function fotosHabitacion(Request $request, $id_oferta)
+    private function fotosPension(Request $request, $id_oferta)
     {
 
         //verificamos si la carpeta no existe, si no es asi creamos una
-        $carpeta = public_path() . '/img/ofertasHabitacion/' . $id_oferta;
+        $carpeta = public_path() . '/img/ofertasPension/' . $id_oferta;
         if (!file_exists($carpeta)) {
             mkdir($carpeta, 0777, true);
         }
 
         // ruta de las imagenes guardadas
-        $ruta = public_path() . '/img/ofertasHabitacion/' . $id_oferta . '/';
+        $ruta = public_path() . '/img/ofertasPension/' . $id_oferta . '/';
 
         // cantidad de imagenes recibidas
         $cantImg = $request->input('cantImg');
@@ -161,13 +156,12 @@ class OfertaHabitacionController extends Controller
             // save( [ruta], [calidad])
             $imagen->save($ruta . $temp_name, 30);
 
-            FotoHabitacion::create([
+            FotoPension::create([
                 'FOTO' => $temp_name,
-                'OFERTA_HABITACION_ID' => $id_oferta
+                'OFERTA_PENSION_ID' => $id_oferta
             ]);
         }
     }
-
 
 
     /**
