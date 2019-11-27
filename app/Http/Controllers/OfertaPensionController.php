@@ -103,6 +103,17 @@ class OfertaPensionController extends Controller
                 'OFERTA_PENSION_ID' => $oferta->id
             ]);
         }
+
+        $ofertaN = OfertaPension::find($oferta->id);
+        $ofertaN->usuario;
+        $ofertaN->ubicacion;
+        $ofertaN->fotos;
+        $ofertaN->serviciosEspecificos;
+        $ofertaN->normasCasa;
+
+        return response()->json([
+            'ofertasPension' => $ofertaN
+        ]);
     }
 
 
