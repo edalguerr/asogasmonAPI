@@ -168,12 +168,10 @@ class OfertaCasaAptoController extends Controller
         $paginacionActual = $request->input('paginacionActual');
         $precioMaximo = $request->input('precioMaximo');
         $cantOfertasObtener = $cantOfertasPorPagina * $paginacionActual;
-        $cantTotal = OfertaCasaApto::where('ID', '>', 0)
-            ->where('PRECIO_MENSUAL', '<=', $precioMaximo)
-            ->count();
-
+        
+        $cantTotal = $this->contarOfertas($request);
         $ofertas = $this->filtrarOfertas($request);
-
+        
         //si hay mas ofertas en la base de datos que las ofertas a obtener 
         //ofertas a obtener = ofertas por pagina * paginacion actual
         if ($cantTotal >= $cantOfertasObtener) {
@@ -330,6 +328,114 @@ class OfertaCasaAptoController extends Controller
         ($request->has('codigoPostal') ? $especifidad++ : null);
 
         return $especifidad;
+    }
+
+    private function contarOfertas(Request $request)
+    {
+
+        $cantOfertasPorPagina = $request->input('cantOfertasPorPagina');
+        $paginacionActual = $request->input('paginacionActual');
+        $precioMaximo = $request->input('precioMaximo');
+        $cantOfertasObtener = $cantOfertasPorPagina * $paginacionActual;
+
+        $especificidad = $this->especificidadUbicacion($request);
+        $pais = 'COLOMBIA';
+
+        switch ($especificidad) {
+            case 1:
+                //para busquedas de ubicacion por pais
+                $ofertas = OfertaCasaApto::join(
+                    'ubicacion_oferta_casa_apto',
+                    'ubicacion_oferta_casa_apto.OFERTA_CASA_APTO_ID',
+                    '=',
+                    'oferta_casa_apto.ID'
+                )
+                    ->select(
+                        'oferta_casa_apto.ID',
+                        'oferta_casa_apto.PRECIO_MENSUAL',
+                        'ubicacion_oferta_casa_apto.PAIS',
+                        'ubicacion_oferta_casa_apto.DEPARTAMENTO',
+                        'ubicacion_oferta_casa_apto.CIUDAD',
+                        'ubicacion_oferta_casa_apto.DIRECCION'
+                    )
+                    ->where('oferta_casa_apto.ID', '>', 0)
+                    ->where('ubicacion_oferta_casa_apto.PAIS', $pais)
+                    ->where('oferta_casa_apto.PRECIO_MENSUAL', '<=', $precioMaximo)
+                    ->count();
+                break;
+            case 2:
+                //para busquedas de ubicacion por pais y departamento
+                $ofertas = OfertaCasaApto::join(
+                    'ubicacion_oferta_casa_apto',
+                    'ubicacion_oferta_casa_apto.OFERTA_CASA_APTO_ID',
+                    '=',
+                    'oferta_casa_apto.ID'
+                )
+                    ->select(
+                        'oferta_casa_apto.ID',
+                        'oferta_casa_apto.PRECIO_MENSUAL',
+                        'ubicacion_oferta_casa_apto.PAIS',
+                        'ubicacion_oferta_casa_apto.DEPARTAMENTO',
+                        'ubicacion_oferta_casa_apto.CIUDAD',
+                        'ubicacion_oferta_casa_apto.DIRECCION'
+                    )
+                    ->where('oferta_casa_apto.ID', '>', 0)
+                    ->where('ubicacion_oferta_casa_apto.PAIS', $pais)
+                    ->where('ubicacion_oferta_casa_apto.DEPARTAMENTO', $request->input('departamento') )
+                    ->where('oferta_casa_apto.PRECIO_MENSUAL', '<=', $precioMaximo)
+                    ->count();
+                break;
+            case 3:
+                //para busquedas de ubicacion por pais, departamento y ciudad
+                $ofertas = OfertaCasaApto::join(
+                    'ubicacion_oferta_casa_apto',
+                    'ubicacion_oferta_casa_apto.OFERTA_CASA_APTO_ID',
+                    '=',
+                    'oferta_casa_apto.ID'
+                )
+                    ->select(
+                        'oferta_casa_apto.ID',
+                        'oferta_casa_apto.PRECIO_MENSUAL',
+                        'ubicacion_oferta_casa_apto.PAIS',
+                        'ubicacion_oferta_casa_apto.DEPARTAMENTO',
+                        'ubicacion_oferta_casa_apto.CIUDAD',
+                        'ubicacion_oferta_casa_apto.DIRECCION'
+                    )
+                    ->where('oferta_casa_apto.ID', '>', 0)
+                    ->where('ubicacion_oferta_casa_apto.PAIS', $pais)
+                    ->where('ubicacion_oferta_casa_apto.DEPARTAMENTO', $request->input('departamento') )
+                    ->where('ubicacion_oferta_casa_apto.CIUDAD', $request->input('ciudad') )
+                    ->where('oferta_casa_apto.PRECIO_MENSUAL', '<=', $precioMaximo)
+                    ->count();
+                break;
+
+            default:
+                //para busquedas de ubicacion por pais, departamento, ciudad, localidad o/y direccion
+                $ofertas = OfertaCasaApto::join(
+                    'ubicacion_oferta_casa_apto',
+                    'ubicacion_oferta_casa_apto.OFERTA_CASA_APTO_ID',
+                    '=',
+                    'oferta_casa_apto.ID'
+                )
+                    ->select(
+                        'oferta_casa_apto.ID',
+                        'oferta_casa_apto.PRECIO_MENSUAL',
+                        'ubicacion_oferta_casa_apto.PAIS',
+                        'ubicacion_oferta_casa_apto.DEPARTAMENTO',
+                        'ubicacion_oferta_casa_apto.CIUDAD',
+                        'ubicacion_oferta_casa_apto.DIRECCION'
+                    )
+                    ->where('oferta_casa_apto.ID', '>', 0)
+                    ->where('ubicacion_oferta_casa_apto.PAIS', $pais)
+                    ->where('ubicacion_oferta_casa_apto.DEPARTAMENTO', $request->input('departamento') )
+                    ->where('ubicacion_oferta_casa_apto.CIUDAD', $request->input('ciudad') )
+                    ->where('ubicacion_oferta_casa_apto.CODIGO_POSTAL', $request->input('codigoPostal') )
+                    ->where('oferta_casa_apto.PRECIO_MENSUAL', '<=', $precioMaximo)
+                    ->count();
+                break;
+        }
+
+        return $ofertas;
     }
 
     /**
