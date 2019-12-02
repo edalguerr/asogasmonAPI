@@ -78,7 +78,6 @@ Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
 
 Route::post('ofertaCasaApto/apartamentos', 'OfertaCasaAptoController@obtenerOfertas');
 
-
 /**********************************************************
  ***************** OFERTA HABITACION **********************
  **********************************************************

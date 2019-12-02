@@ -74,7 +74,9 @@ class OfertaPensionController extends Controller
                 : null),
             'CODIGO_POSTAL'
             => ($request->has('codigoPostal') ? $request->input('codigoPostal') : null),
-            'OFERTA_PENSION_ID' => $oferta->id
+            'OFERTA_PENSION_ID' => $oferta->id,
+            'LATITUD' => $request->input('latitud'),
+            'LONGITUD' => $request->input('longitud')
         ]);
 
         //Guardamos fotos

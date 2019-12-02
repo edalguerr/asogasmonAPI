@@ -19,6 +19,8 @@ class UbicacionOfertaPension extends Model
         'LOCALIDAD',
         'DIRECCION',
         'CODIGO_POSTAL',
+        'LATITUD',
+        'LONGITUD',
         'OFERTA_PENSION_ID'
     ];
 

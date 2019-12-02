@@ -19,6 +19,8 @@ class UbicacionOfertaCasaApto extends Model
         'LOCALIDAD',
         'DIRECCION',
         'CODIGO_POSTAL',
+        'LATITUD',
+        'LONGITUD',
         'OFERTA_CASA_APTO_ID'
     ];
 

@@ -19,6 +19,8 @@ class UbicacionOfertaHabitacion extends Model
         'LOCALIDAD',
         'DIRECCION',
         'CODIGO_POSTAL',
+        'LATITUD',
+        'LONGITUD',
         'OFERTA_HABITACION_ID'
     ];
 

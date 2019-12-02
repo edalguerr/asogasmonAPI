@@ -21,7 +21,7 @@ class OfertaHabitacionController extends Controller
     public function index()
     {
         //
-        
+
         return response()->json([
             'ofertasHabitacion' => OfertaHabitacion::all()
         ]);
@@ -68,7 +68,9 @@ class OfertaHabitacionController extends Controller
                 : null),
             'CODIGO_POSTAL'
             => ($request->has('codigoPostal') ? $request->input('codigoPostal') : null),
-            'OFERTA_HABITACION_ID' => $oferta->id
+            'OFERTA_HABITACION_ID' => $oferta->id,
+            'LATITUD' => $request->input('latitud'),
+            'LONGITUD' => $request->input('longitud')
         ]);
 
 
