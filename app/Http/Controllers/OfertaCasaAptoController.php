@@ -197,7 +197,9 @@ class OfertaCasaAptoController extends Controller
 
         $fotos = [];
         for ($i = 0; $i < count($ofertasFiltradas); $i++) {
-            $fotos[$i] = FotoCasaApto::where('OFERTA_CASA_APTO_ID', $ofertasFiltradas[$i]['ID'])->select('FOTO')->take(1)->get();
+            $fotoActual = FotoCasaApto::where('OFERTA_CASA_APTO_ID', $ofertasFiltradas[$i]['ID'])->select('FOTO')->take(1)->get();
+            $fotos[$i] = $fotoActual->first();
+                      
         }
 
         return response()->json([
