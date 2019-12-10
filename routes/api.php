@@ -101,3 +101,5 @@ Route::resource('ofertaPension', 'OfertaPensionController')->except(
         'create', 'edit', 'update', 'destroy', 'show'
     ]
 );
+
+Route::post('ofertaPension/pensiones', 'OfertaPensionController@obtenerOfertas');
