@@ -89,6 +89,8 @@ Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
     ]
 );
 
+Route::post('ofertaHabitacion/habitaciones', 'OfertaHabitacionController@obtenerOfertas');
+
 /**********************************************************
  ***************** OFERTA PENSION **********************
  **********************************************************
