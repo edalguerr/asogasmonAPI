@@ -84,7 +84,7 @@ class inicioSesionController extends Controller
         //POR HACER: verificar los datos recibidos y su formato
         $usuarios = Usuario::where('email', $request->email)->first();
         //POR HACER: Definir imagen por defecto y su nombre
-        $imgDefecto = 'avatar.jpg';
+        $imgDefecto = 'avatar.png';
 
         //si el correo ingresado ya esta en uso
         if (count($usuarios) >= 1) {
