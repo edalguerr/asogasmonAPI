@@ -219,7 +219,8 @@ class OfertaArticulo extends Controller
                 )
                     ->select(
                         'oferta_articulo.ID',
-                        'oferta_articulo.PRECIO',
+                        'oferta_articulo.TITULO_AVISO',
+                        'oferta_articulo.PRECIO',                        
                         'ubicacion_oferta_articulo.PAIS',
                         'ubicacion_oferta_articulo.DEPARTAMENTO',
                         'ubicacion_oferta_articulo.CIUDAD',
@@ -242,7 +243,8 @@ class OfertaArticulo extends Controller
                 )
                     ->select(
                         'oferta_articulo.ID',
-                        'oferta_articulo.PRECIO',
+                        'oferta_articulo.TITULO_AVISO',
+                        'oferta_articulo.PRECIO',                        
                         'ubicacion_oferta_articulo.PAIS',
                         'ubicacion_oferta_articulo.DEPARTAMENTO',
                         'ubicacion_oferta_articulo.CIUDAD',
@@ -266,7 +268,8 @@ class OfertaArticulo extends Controller
                 )
                     ->select(
                         'oferta_articulo.ID',
-                        'oferta_articulo.PRECIO',
+                        'oferta_articulo.TITULO_AVISO',
+                        'oferta_articulo.PRECIO',                        
                         'ubicacion_oferta_articulo.PAIS',
                         'ubicacion_oferta_articulo.DEPARTAMENTO',
                         'ubicacion_oferta_articulo.CIUDAD',
@@ -291,7 +294,8 @@ class OfertaArticulo extends Controller
                 )
                     ->select(
                         'oferta_articulo.ID',
-                        'oferta_articulo.PRECIO',
+                        'oferta_articulo.TITULO_AVISO',
+                        'oferta_articulo.PRECIO',                        
                         'ubicacion_oferta_articulo.PAIS',
                         'ubicacion_oferta_articulo.DEPARTAMENTO',
                         'ubicacion_oferta_articulo.CIUDAD',
@@ -312,7 +316,7 @@ class OfertaArticulo extends Controller
 
         return $ofertas;
     }
-
+ 
     private function contarOfertas(Request $request)
     {
 
@@ -391,7 +395,7 @@ class OfertaArticulo extends Controller
 
 
 
-    
+   
 
     /**
      * Display the specified resource.
