@@ -46,6 +46,9 @@ Route::resource('ofertaArticulo', 'OfertaArticulo')->except(
     ]
 );
 
+Route::post('ofertaArticulo/articulos', 'OfertaArticulo@obtenerOfertas');
+
+
 /**********************************************************
  ***********CATEGORIAS Y SUBCATEGORIAS DE ARTICULOS********
  **********************************************************
@@ -68,7 +71,7 @@ Route::post('normasCasa', 'NormaCasaController@normas');
 /**********************************************************
  ***************** OFERTA CASA_APTO ***********************
  **********************************************************
-*/
+ */
 
 Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
     [
@@ -81,7 +84,7 @@ Route::post('ofertaCasaApto/apartamentos', 'OfertaCasaAptoController@obtenerOfer
 /**********************************************************
  ***************** OFERTA HABITACION **********************
  **********************************************************
-*/
+ */
 
 Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
     [
@@ -94,7 +97,7 @@ Route::post('ofertaHabitacion/habitaciones', 'OfertaHabitacionController@obtener
 /**********************************************************
  ***************** OFERTA PENSION **********************
  **********************************************************
-*/
+ */
 
 Route::resource('ofertaPension', 'OfertaPensionController')->except(
     [

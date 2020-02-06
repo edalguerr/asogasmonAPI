@@ -17,8 +17,9 @@ class UbicacionOfertaArticulo extends Model
         'PAIS',
         'DEPARTAMENTO',
         'CIUDAD',
-        'LOCALIDAD'
-    ];
+        'LOCALIDAD',
+        'CODIGO_POSTAL'
+    ]; 
 
     public function oferta(){
         return $this->belongsTo(OfertaArticulo::class,'OFERTA_ARTICULO_ID','ID');

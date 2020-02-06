@@ -11,8 +11,6 @@ use App\models\ServicioEspecificoOfertaCasaApto;
 
 use Image;
 
-use function PHPSTORM_META\type;
-
 class OfertaCasaAptoController extends Controller
 {
     /**
