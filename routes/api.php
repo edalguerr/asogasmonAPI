@@ -34,27 +34,6 @@ Route::post('/signin/avatar', 'inicioSesionController@avatar');
 Route::post('/signin/updateAvatar', 'inicioSesionController@updateAvatar');
 Route::post('/signin/resetPass', 'inicioSesionController@resetPassword');
 
-
-/**********************************************************
- ***************** OFERTA ARTICULO ***********************
- * ********************************************************
- */
-
-Route::resource('ofertaArticulo', 'OfertaArticulo')->except(
-    [
-        'create', 'edit', 'update', 'destroy', 'show'
-    ]
-);
-
-Route::post('ofertaArticulo/articulos', 'OfertaArticulo@obtenerOfertas');
-
-
-/**********************************************************
- ***********CATEGORIAS Y SUBCATEGORIAS DE ARTICULOS********
- **********************************************************
- */
-Route::post('categoriasArticulo', 'CategoriaController@index');
-
 /**********************************************************
  *****************SERVICIOS ESPECIFICOS********************
  **********************************************************
