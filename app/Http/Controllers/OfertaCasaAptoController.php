@@ -197,7 +197,6 @@ class OfertaCasaAptoController extends Controller
         for ($i = 0; $i < count($ofertasFiltradas); $i++) {
             $fotoActual = FotoCasaApto::where('OFERTA_CASA_APTO_ID', $ofertasFiltradas[$i]['ID'])->select('FOTO')->take(1)->get();
             $fotos[$i] = $fotoActual->first();
-                      
         }
 
         return response()->json([
@@ -422,7 +421,7 @@ class OfertaCasaAptoController extends Controller
         return $ofertas;
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -432,6 +431,22 @@ class OfertaCasaAptoController extends Controller
     public function show($id)
     {
         //
+        $oferta =  OfertaCasaApto::find($id);
+
+        if (!$oferta) {
+            return response()->json([
+                'ofertasCasaApto' => null
+            ]);
+        }
+
+        $oferta->usuario;
+        $oferta->ubicacion;
+        $oferta->serviciosEspecificos;
+        $oferta->fotos;
+
+        return response()->json([
+            'ofertasCasaApto' => $oferta
+        ]);
     }
 
 

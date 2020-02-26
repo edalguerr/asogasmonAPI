@@ -54,7 +54,7 @@ Route::post('normasCasa', 'NormaCasaController@normas');
 
 Route::resource('ofertaCasaApto', 'OfertaCasaAptoController')->except(
     [
-        'create', 'edit', 'update', 'destroy', 'show'
+        'create', 'edit', 'update', 'destroy'
     ]
 );
 
@@ -67,7 +67,7 @@ Route::post('ofertaCasaApto/apartamentos', 'OfertaCasaAptoController@obtenerOfer
 
 Route::resource('ofertaHabitacion', 'OfertaHabitacionController')->except(
     [
-        'create', 'edit', 'update', 'destroy', 'show'
+        'create', 'edit', 'update', 'destroy'
     ]
 );
 
@@ -80,7 +80,7 @@ Route::post('ofertaHabitacion/habitaciones', 'OfertaHabitacionController@obtener
 
 Route::resource('ofertaPension', 'OfertaPensionController')->except(
     [
-        'create', 'edit', 'update', 'destroy', 'show'
+        'create', 'edit', 'update', 'destroy'
     ]
 );
 

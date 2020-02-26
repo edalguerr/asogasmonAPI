@@ -453,6 +453,23 @@ class OfertaPensionController extends Controller
     public function show($id)
     {
         //
+        $oferta = OfertaPension::find($id);
+        
+        if (!$oferta) {
+            return response()->json([
+                'ofertasPension' => null
+            ]);
+        }
+
+        $oferta->usuario;
+        $oferta->ubicacion;
+        $oferta->fotos;
+        $oferta->serviciosEspecificos;
+        $oferta->normasCasa;
+
+        return response()->json([
+            'ofertasPension' => $oferta
+        ]);
     }
 
 

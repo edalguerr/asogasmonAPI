@@ -210,7 +210,6 @@ class OfertaHabitacionController extends Controller
         for ($i = 0; $i < count($ofertasFiltradas); $i++) {
             $fotoActual = FotoHabitacion::where('OFERTA_HABITACION_ID', $ofertasFiltradas[$i]['ID'])->select('FOTO')->take(1)->get();
             $fotos[$i] = $fotoActual->first();
-                      
         }
 
         return response()->json([
@@ -436,7 +435,7 @@ class OfertaHabitacionController extends Controller
     }
 
 
-    
+
 
     /**
      * Display the specified resource.
@@ -447,6 +446,23 @@ class OfertaHabitacionController extends Controller
     public function show($id)
     {
         //
+        $oferta = OfertaHabitacion::find($id);
+        
+        if (!$oferta) {
+            return response()->json([
+                'ofertasHabitacion' => null
+            ]);
+        }
+
+        $oferta->usuario;
+        $oferta->ubicacion;
+        $oferta->serviciosEspecificos;
+        $oferta->fotos;
+        $oferta->normasCasa;
+
+        return response()->json([
+            'ofertasHabitacion' => $oferta
+        ]);
     }
 
 
@@ -472,5 +488,4 @@ class OfertaHabitacionController extends Controller
     {
         //
     }
-
 }
