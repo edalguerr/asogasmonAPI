@@ -91,4 +91,11 @@ Route::post('ofertaPension/pensiones', 'OfertaPensionController@obtenerOfertas')
  *******************************************************************
  */
 
- Route::post('ultimasOfertas', 'UltimasOfertasController@ofertas');
+Route::post('ultimasOfertas', 'UltimasOfertasController@ofertas');
+
+/*******************************************************************
+ ******************** OFERTAS DESTACADAS ***************************
+ *******************************************************************
+ */
+
+Route::post('ofertasDestacadas', 'OfertasDestacadasController@ofertas');
