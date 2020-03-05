@@ -85,3 +85,10 @@ Route::resource('ofertaPension', 'OfertaPensionController')->except(
 );
 
 Route::post('ofertaPension/pensiones', 'OfertaPensionController@obtenerOfertas');
+
+/*******************************************************************
+ ***************** ULTIMAS OFERTAS PUBLICADAS **********************
+ *******************************************************************
+ */
+
+ Route::post('ultimasOfertas', 'UltimasOfertasController@ofertas');
