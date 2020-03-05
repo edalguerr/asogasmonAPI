@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2019 a las 04:36:54
+-- Tiempo de generación: 05-03-2020 a las 21:42:03
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.1.32
 
@@ -25,112 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
---
-
-CREATE TABLE `categoria` (
-  `ID` int(11) NOT NULL,
-  `NOMBRE` varchar(45) COLLATE utf8_bin NOT NULL,
-  `ICONO` varchar(30) COLLATE utf8_bin NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`ID`, `NOMBRE`, `ICONO`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'LIBROS', 'fa-snowflake', '2019-10-19 22:33:24', '2019-10-19 22:33:24'),
-(2, 'OTROS', 'fa-ascensor', '2019-11-03 18:42:22', '2019-11-03 18:42:22');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `conversacion`
---
-
-CREATE TABLE `conversacion` (
-  `ID` int(11) NOT NULL,
-  `ID_USUARIO_RECEPTOR` int(11) NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `foto_articulo`
---
-
-CREATE TABLE `foto_articulo` (
-  `ID` int(11) NOT NULL,
-  `FOTO` varchar(45) COLLATE utf8_bin NOT NULL,
-  `OFERTA_ARTICULO_ID` int(11) NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `foto_articulo`
---
-
-INSERT INTO `foto_articulo` (`ID`, `FOTO`, `OFERTA_ARTICULO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'fotos/articulos/usuario/1/foto1.jpg', 1, '2019-10-20 02:45:49', '2019-10-20 02:45:49'),
-(2, 'fotos/articulos/usuario/1/foto2.jpg', 1, '2019-10-20 02:45:49', '2019-10-20 02:45:49'),
-(3, 'fotos/articulos/usuario/1/foto3.jpg', 1, '2019-10-20 02:45:49', '2019-10-20 02:45:49'),
-(4, 'fotos/articulos/usuario/2/foto1.jpg', 2, '2019-10-20 02:46:44', '2019-10-20 02:46:44'),
-(5, 'fotos/articulos/usuario/2/foto2.jpg', 2, '2019-10-20 02:46:44', '2019-10-20 02:46:44'),
-(6, 'fotos/articulos/usuario/2/foto3.jpg', 2, '2019-10-20 02:46:44', '2019-10-20 02:46:44'),
-(7, 'fotos/articulos/usuario/3/foto1.jpg', 3, '2019-10-20 02:47:09', '2019-10-20 02:47:09'),
-(8, 'fotos/articulos/usuario/3/foto2.jpg', 3, '2019-10-20 02:47:09', '2019-10-20 02:47:09'),
-(9, 'fotos/articulos/usuario/3/foto3.jpg', 3, '2019-10-20 02:47:09', '2019-10-20 02:47:09'),
-(11, 'fotos/articulos/usuario/3/foto3.jpg', 7, '2019-10-20 03:31:24', '2019-10-20 03:31:24'),
-(15, '32rvgln57x.webp', 1, '2019-11-03 16:53:10', '2019-11-03 16:53:10'),
-(16, 'wqhkdfxwv9.webp', 1, '2019-11-03 16:53:10', '2019-11-03 16:53:10'),
-(17, 'i7p6rsqb2t.webp', 1, '2019-11-03 16:53:11', '2019-11-03 16:53:11'),
-(18, 'vertgcb5ia.webp', 1, '2019-11-03 17:04:13', '2019-11-03 17:04:13'),
-(19, '6elt4i3uzr.webp', 1, '2019-11-03 17:04:13', '2019-11-03 17:04:13'),
-(20, 'b6er1lxcgr.webp', 1, '2019-11-03 17:04:13', '2019-11-03 17:04:13'),
-(21, '4i8t7pcvh9.webp', 9, '2019-11-03 17:08:00', '2019-11-03 17:08:00'),
-(22, 'omoicmbtdw.webp', 9, '2019-11-03 17:08:00', '2019-11-03 17:08:00'),
-(23, 'zh7d1iqxjw.webp', 9, '2019-11-03 17:08:01', '2019-11-03 17:08:01'),
-(24, 'rkc3go7oft.webp', 10, '2019-11-03 17:14:41', '2019-11-03 17:14:41'),
-(25, 'lr4tlgvjt5.webp', 10, '2019-11-03 17:14:41', '2019-11-03 17:14:41'),
-(26, 'yju7a5vuas.webp', 10, '2019-11-03 17:14:41', '2019-11-03 17:14:41'),
-(27, '6t73vlf321.webp', 11, '2019-11-03 17:17:28', '2019-11-03 17:17:28'),
-(28, 'lrv86uec7g.webp', 11, '2019-11-03 17:17:31', '2019-11-03 17:17:31'),
-(29, 'zkku51x3sq.webp', 11, '2019-11-03 17:17:36', '2019-11-03 17:17:36'),
-(30, 'neevbs2rja.webp', 13, '2019-11-05 03:28:56', '2019-11-05 03:28:56'),
-(31, 'ypqdre1vou.webp', 13, '2019-11-05 03:28:57', '2019-11-05 03:28:57'),
-(32, 'nv7ktxxsgx.webp', 13, '2019-11-05 03:28:57', '2019-11-05 03:28:57'),
-(33, '3ti8zik9i1.webp', 13, '2019-11-05 03:28:57', '2019-11-05 03:28:57'),
-(34, 'vhwv8p23pd.webp', 14, '2019-11-05 03:37:35', '2019-11-05 03:37:35'),
-(35, '1qfpw1mgt0.webp', 14, '2019-11-05 03:37:36', '2019-11-05 03:37:36'),
-(36, 'gc3h4mtq6i.webp', 14, '2019-11-05 03:37:36', '2019-11-05 03:37:36'),
-(37, '2z35t28mov.webp', 14, '2019-11-05 03:37:36', '2019-11-05 03:37:36'),
-(38, 'sbfadyewaz.webp', 14, '2019-11-05 03:37:36', '2019-11-05 03:37:36'),
-(39, '22mmrxe1b4.webp', 15, '2019-11-07 18:07:13', '2019-11-07 18:07:13'),
-(40, 'dqe66den2l.webp', 15, '2019-11-07 18:07:13', '2019-11-07 18:07:13'),
-(41, 'mkddrd2o8f.webp', 15, '2019-11-07 18:07:14', '2019-11-07 18:07:14'),
-(42, 'qenihpjlck.webp', 16, '2019-11-08 16:43:47', '2019-11-08 16:43:47'),
-(43, '142jg6xhhx.webp', 17, '2019-11-08 16:54:05', '2019-11-08 16:54:05'),
-(44, '6v81fwga3m.webp', 18, '2019-11-08 16:59:57', '2019-11-08 16:59:57'),
-(45, '4ef5xpeani.webp', 19, '2019-11-08 17:08:56', '2019-11-08 17:08:56'),
-(46, 'oe8pu8wq0y.webp', 20, '2019-11-08 17:11:06', '2019-11-08 17:11:06'),
-(47, 'wuyx8ije1h.webp', 20, '2019-11-08 17:11:07', '2019-11-08 17:11:07'),
-(48, 'de7v74z6a1.webp', 21, '2019-11-08 17:12:52', '2019-11-08 17:12:52'),
-(49, 'cpq3lgi5mb.webp', 21, '2019-11-08 17:12:53', '2019-11-08 17:12:53'),
-(50, 'rpce0yxlr0.webp', 21, '2019-11-08 17:12:53', '2019-11-08 17:12:53'),
-(51, 'cinl24nb48.webp', 23, '2019-11-08 17:17:08', '2019-11-08 17:17:08'),
-(52, 'ntmjip1nj2.webp', 24, '2019-11-08 17:17:56', '2019-11-08 17:17:56'),
-(53, '6k8voe9ljp.webp', 25, '2019-12-18 15:33:50', '2019-12-18 15:33:50'),
-(54, 'xc2nbsa1fs.webp', 25, '2019-12-18 15:33:51', '2019-12-18 15:33:51');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `foto_casa_apto`
 --
 
@@ -147,9 +41,6 @@ CREATE TABLE `foto_casa_apto` (
 --
 
 INSERT INTO `foto_casa_apto` (`ID`, `FOTO`, `OFERTA_CASA_APTO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'fotos/casaApto/usuario/3/foto1.jpg', 1, '2019-10-20 22:24:35', '2019-10-20 22:24:35'),
-(2, 'fotos/casaApto/usuario/3/foto2.jpg', 1, '2019-10-20 22:24:35', '2019-10-20 22:24:35'),
-(3, 'fotos/casaApto/usuario/3/foto3.jpg', 1, '2019-10-20 22:24:35', '2019-10-20 22:24:35'),
 (5, 'nsahlog4mw.webp', 5, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
 (6, '24ro4xp85r.webp', 5, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
 (7, 'ob8ldnlmny.webp', 5, '2019-11-08 20:18:37', '2019-11-08 20:18:37'),
@@ -227,21 +118,6 @@ INSERT INTO `foto_pension` (`ID`, `FOTO`, `OFERTA_PENSION_ID`, `CREADO_EN`, `ACT
 (14, 'cm1wbfsvbe.webp', 10, '2019-11-27 23:42:32', '2019-11-27 23:42:32'),
 (15, 'a7p4x7ver0.webp', 13, '2019-12-02 19:11:40', '2019-12-02 19:11:40'),
 (16, 'nvswubpsyd.webp', 14, '2019-12-18 16:00:02', '2019-12-18 16:00:02');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `mensaje`
---
-
-CREATE TABLE `mensaje` (
-  `ID` int(11) NOT NULL,
-  `MENSAJE` text COLLATE utf8_bin DEFAULT NULL,
-  `DIRECCION_MENSAJE` varchar(12) COLLATE utf8_bin DEFAULT 'ENVIADO',
-  `CONVERSACION_ID` int(11) NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -325,54 +201,12 @@ INSERT INTO `norma_casa_has_oferta_pension` (`ID`, `NORMA_CASA_ID`, `OFERTA_PENS
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `oferta_articulo`
---
-
-CREATE TABLE `oferta_articulo` (
-  `ID` int(11) NOT NULL,
-  `DESCRIPCION` text COLLATE utf8_bin NOT NULL,
-  `PRECIO` int(11) NOT NULL,
-  `NUMERO_CELULAR` bigint(20) NOT NULL,
-  `TITULO_AVISO` varchar(70) COLLATE utf8_bin NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL,
-  `SUB_CATEGORIA_ID` int(11) NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `oferta_articulo`
---
-
-INSERT INTO `oferta_articulo` (`ID`, `DESCRIPCION`, `PRECIO`, `NUMERO_CELULAR`, `TITULO_AVISO`, `USUARIO_ID`, `SUB_CATEGORIA_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'Vendo libro de  algebra de baldor edicion numero 2, precio negociable, en buen estado, hojas limpias sin doblar', 50000, 3106022481, 'Algebra de baldor edicion 2', 1, 1, '2019-10-19 23:42:35', '2019-10-19 23:42:35'),
-(2, 'Vendo libro de calculo diferencial de ron larson con ejercicios propuestos y solucionario, precio negociable, en buen estado, hojas limpias sin doblar', 70000, 3124567890, 'Calculo diferencial Ron larson', 3, 1, '2019-10-19 23:52:24', '2019-10-19 23:52:24'),
-(3, 'Vendo libro de programacion en c++, explica los fundamentos del lenguaje, ejemplos practicos, precio negociable, en buen estado, hojas limpias sin doblar', 60000, 3124567890, 'C++ fundamentos', 3, 4, '2019-10-20 02:34:50', '2019-10-20 02:34:50'),
-(7, 'Vendo libro de contaduria, explica los fundamentos contables con ejemplos practicos y solucionario incluido, precio negociable, en buen estado, hojas limpias sin doblar', 45000, 3124567890, 'Fundamentos de contaduria', 3, 3, '2019-10-20 03:31:24', '2019-10-20 03:31:24'),
-(9, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 650000, 3124567890, 'Casa en arriendo', 1, 1, '2019-11-03 17:08:00', '2019-11-03 17:08:00'),
-(10, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 650000, 3124567890, 'Casa en arriendo', 1, 1, '2019-11-03 17:14:40', '2019-11-03 17:14:40'),
-(11, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 650000, 3124567890, 'Casa en arriendo', 1, 1, '2019-11-03 17:17:25', '2019-11-03 17:17:25'),
-(13, 'Libro en buen estado, hojas limpias y sin doblar.', 43000, 4556231333, 'Libro algebra de baldor con ejercicios resueltos', 1, 1, '2019-11-05 03:28:55', '2019-11-05 03:28:55'),
-(14, 'Naranjas tropicales, frescas, dulces, de buen tamaño, + 20 naranjas de ñapa. El costo de envio no va incluido', 10000, 3265148975, 'Ciento de naranja en venta', 1, 5, '2019-11-05 03:37:35', '2019-11-05 03:37:35'),
-(15, 'bata de laboratorio de fisica y quimica para ingenieria de sistemas, talla s', 23000, 1243454354, 'Bata de laboratorio', 1, 5, '2019-11-07 18:07:12', '2019-11-07 18:07:12'),
-(16, 'Sueter con logo de html + css + js', 25000, 5123456786, 'Sueter desarrollador en venta', 1, 4, '2019-11-08 16:43:45', '2019-11-08 16:43:45'),
-(17, 'Sueter desarrollo angular en venta, buena tela', 18000, 6478687876, 'Sueter angular developer en venta', 1, 5, '2019-11-08 16:54:04', '2019-11-08 16:54:04'),
-(18, 'Sueter de git a la venta, tela fresca, ideal para la calor', 28000, 2131237631, 'Sueter control de versiones git a la venta', 1, 5, '2019-11-08 16:59:56', '2019-11-08 16:59:56'),
-(19, 'Sueter con frase en ingles que traduce nunca olvides, asociado con una imagen de un disquete', 15000, 6549685456, 'sueter informatico', 1, 5, '2019-11-08 17:08:56', '2019-11-08 17:08:56'),
-(20, 'sueter limpio en buen estado, no incluye el envio', 15000, 6549685456, 'sueter informatico', 1, 5, '2019-11-08 17:11:06', '2019-11-08 17:11:06'),
-(21, 'pack fullstack developer', 40000, 6546547646, 'sueters angular + node', 1, 5, '2019-11-08 17:12:52', '2019-11-08 17:12:52'),
-(23, 'Diagrams + documentacion para proyectos de ingenieria de software', 60000, 5786854686, 'se hacen diagramas uml', 1, 5, '2019-11-08 17:17:08', '2019-11-08 17:17:08'),
-(24, 'Maduritas, dulces y deliciosas', 60000, 5786854686, 'Ciento de naranja en venta', 1, 5, '2019-11-08 17:17:56', '2019-11-08 17:17:56'),
-(25, 'Apuntes de clases, introducción al álgebra con ejercicios y solucionario', 34000, 3146734590, 'Libro matematicas  2', 9, 1, '2019-12-18 15:33:49', '2019-12-18 15:33:49');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `oferta_casa_apto`
 --
 
 CREATE TABLE `oferta_casa_apto` (
   `ID` int(11) NOT NULL,
+  `INMUEBLE` varchar(25) COLLATE utf8_bin NOT NULL DEFAULT 'CASAAPTO',
   `TIPO_INMUEBLE` varchar(15) COLLATE utf8_bin NOT NULL,
   `NUM_HABITACIONES` smallint(6) NOT NULL,
   `NUM_BANIOS` smallint(6) NOT NULL,
@@ -393,49 +227,48 @@ CREATE TABLE `oferta_casa_apto` (
 -- Volcado de datos para la tabla `oferta_casa_apto`
 --
 
-INSERT INTO `oferta_casa_apto` (`ID`, `TIPO_INMUEBLE`, `NUM_HABITACIONES`, `NUM_BANIOS`, `AREA_INMUEBLE`, `ESTANCIA_MINIMA`, `SERVICIOS_PRINCIPALES`, `AMOBLADA`, `PRECIO_MENSUAL`, `NUMERO_CELULAR`, `DESCRIPCION`, `TITULO_AVISO`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(5, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
-(6, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
-(7, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(8, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(9, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
-(10, 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
-(11, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(12, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(13, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
-(14, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
-(15, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(16, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(17, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
-(18, 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
-(19, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(20, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(21, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
-(22, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
-(23, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(24, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(25, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(26, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
-(27, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
-(28, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(29, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(30, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(31, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(32, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(33, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
-(34, 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
-(35, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(36, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(37, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
-(38, 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
-(39, 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
-(40, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
-(41, 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
-(42, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-28 21:58:00'),
-(43, 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-28 21:58:00'),
-(44, 'APARTAMENTO', 1, 1, 50, 0, 0, 0, 450000, 2465564654, 'df dsjukf dsuifdsaufsfi8sf fsdyfgdf bdfy vfdv97fyfdsfsd fsf', 'apartamento en arriedno', 1, '2019-12-02 18:50:34', '2019-12-02 18:50:34'),
-(45, 'CASA', 3, 1, 50, 0, 0, 0, 600000, 3162024789, 'Casa en arriendo en buen sector, cerca a la avenida de olaya', 'pequeña casa en arriendo', 9, '2019-12-18 15:28:59', '2019-12-18 15:28:59');
+INSERT INTO `oferta_casa_apto` (`ID`, `INMUEBLE`, `TIPO_INMUEBLE`, `NUM_HABITACIONES`, `NUM_BANIOS`, `AREA_INMUEBLE`, `ESTANCIA_MINIMA`, `SERVICIOS_PRINCIPALES`, `AMOBLADA`, `PRECIO_MENSUAL`, `NUMERO_CELULAR`, `DESCRIPCION`, `TITULO_AVISO`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
+(5, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
+(6, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
+(7, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(8, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(9, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
+(10, 'CASAAPTO', 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
+(11, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(12, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(13, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
+(14, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
+(15, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(16, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(17, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
+(18, 'CASAAPTO', 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
+(19, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(20, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(21, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
+(22, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
+(23, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(24, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(25, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(26, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
+(27, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
+(28, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(29, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(30, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(31, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(32, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(33, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'jkhdsifuf sdfpsfpsfaspdifhugdil bff fsdui gfsd fyufg v bvcxl v f nbvpied h bhvkh vsfd vuy gscfd ds', 'pequeña casa en arriendo', 1, '2019-11-18 23:40:35', '2019-11-18 23:40:35'),
+(34, 'CASAAPTO', 'APARTAMENTO', 1, 1, 50, 3, 1, 0, 450000, 2465564654, 'hjfkds fjds fs kffsdñjf ksdljifsblfsdf', 'pequeña casa en arriendo', 1, '2019-11-25 17:30:50', '2019-11-25 17:30:50'),
+(35, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(36, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(37, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
+(38, 'CASAAPTO', 'APARTAMENTO', 2, 1, 70, 0, 0, 1, 450000, 3162024789, 'fasdf asfdf safsfs fdfsdf sfs fsd', 'apartamento en arriedno', 1, '2019-11-18 23:38:23', '2019-11-18 23:38:23'),
+(39, 'CASAAPTO', 'APARTAMENTO', 3, 1, 40, 0, 0, 0, 500000, 3124567890, 'Apartamento en arriendo, cerca a zona comercial, gimnasio, parque y parqueadero inlcuido', 'Apartamento en arriendo', 3, '2019-10-20 21:28:15', '2019-10-20 21:28:15'),
+(40, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
+(41, 'CASAAPTO', 'CASA', 4, 1, 60, 6, 0, 0, 650000, 3124567890, 'Casa en arriendo, cerca a la avenida, con patio grande e individual', 'Casa en arriendo', 1, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
+(42, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-28 21:58:00'),
+(43, 'CASAAPTO', 'CASA', 3, 1, 70, 3, 0, 0, 450000, 3162024789, 'fadsfs fkjujsdfa sf fjksdh fsdf sdjf sdfds fdsjuhf sdfiusdfhi oifdsfdsikfds fbdsfil uf7rerjewbir werqwe rij cxkmvfas gmnm', 'Casa en arriendo, tamaño familiar', 1, '2019-11-18 23:32:40', '2019-11-28 21:58:00'),
+(44, 'CASAAPTO', 'APARTAMENTO', 1, 1, 50, 0, 0, 0, 450000, 2465564654, 'df dsjukf dsuifdsaufsfi8sf fsdyfgdf bdfy vfdv97fyfdsfsd fsf', 'apartamento en arriedno', 1, '2019-12-02 18:50:34', '2019-12-02 18:50:34'),
+(45, 'CASAAPTO', 'CASA', 3, 1, 50, 0, 0, 0, 600000, 3162024789, 'Casa en arriendo en buen sector, cerca a la avenida de olaya', 'pequeña casa en arriendo', 9, '2019-12-18 15:28:59', '2019-12-18 15:28:59');
 
 -- --------------------------------------------------------
 
@@ -445,6 +278,7 @@ INSERT INTO `oferta_casa_apto` (`ID`, `TIPO_INMUEBLE`, `NUM_HABITACIONES`, `NUM_
 
 CREATE TABLE `oferta_habitacion` (
   `ID` int(11) NOT NULL,
+  `INMUEBLE` varchar(25) COLLATE utf8_bin NOT NULL DEFAULT 'HABITACION',
   `AMOBLADA` tinyint(1) NOT NULL,
   `TIPO_HABITACION` varchar(15) COLLATE utf8_bin NOT NULL,
   `BANIO_INTERNO` tinyint(1) NOT NULL,
@@ -466,12 +300,12 @@ CREATE TABLE `oferta_habitacion` (
 -- Volcado de datos para la tabla `oferta_habitacion`
 --
 
-INSERT INTO `oferta_habitacion` (`ID`, `AMOBLADA`, `TIPO_HABITACION`, `BANIO_INTERNO`, `GENERO_ADMITIDO`, `ALIMENTACION_INCLUIDA`, `AREA_INMUEBLE`, `ESTANCIA_MINIMA`, `NUM_HABITANTES`, `NUMERO_CELULAR`, `PRECIO_MENSUAL`, `TITULO_AVISO`, `DESCRIPCION`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(11, 1, 'COMPARTIDA', 0, 'TODOS', 1, 15, 3, 5, 3254896235, 500000, 'Habitacion compartida en arriendo', 'Habitacion en arriendo, amoblada, en zona residencial, con parqueadero y vigilancia', 1, '2019-11-23 04:13:38', '2019-11-23 04:13:38'),
-(12, 1, 'COMPARTIDA', 0, 'HOMBRES', 1, 20, 3, 5, 3162024789, 450000, 'Habitacion en arriendo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1, '2019-11-27 16:44:11', '2019-11-27 16:44:11'),
-(13, 1, 'INDIVIDUAL', 0, 'MUJERES', 1, 20, 0, 1, 2465564654, 450000, 'dfsa dsf as asfsadf dsfjsd fsdfdsfsfdkds ffdsfsdfdsf', '//variables por defecto para publicar articulo nuevo\n  resetVariables() {\n    this.ofertaNueva = {\n      PRECIO_MENSUAL: 0,\n      DESCRIPCION: \"\",\n      TITULO_AVISO: \"\",\n      FOTOS: [],\n      ...this.ofertaNueva\n    }\n\n    this.datosIncorrectos = false;\n    this.imagenPrincipalAgregada = false;', 1, '2019-11-27 16:52:07', '2019-11-27 16:52:07'),
-(14, 1, 'INDIVIDUAL', 1, 'MUJERES', 1, 20, 0, 1, 3162024789, 450000, 'habitacion en arriendo', 'fadsfsdf sdflkiuh fds n fdiol ujsfd kfljdsbdfl.k gfdh dfgbhño gffdg', 1, '2019-12-02 19:02:07', '2019-12-02 19:02:07'),
-(15, 1, 'INDIVIDUAL', 0, 'TODOS', 0, 20, 0, 1, 2465564654, 450000, 'habitacion en arriendo', 'Habitacion en arriendo en la calle central de montecristo', 9, '2019-12-18 15:53:06', '2019-12-18 15:53:06');
+INSERT INTO `oferta_habitacion` (`ID`, `INMUEBLE`, `AMOBLADA`, `TIPO_HABITACION`, `BANIO_INTERNO`, `GENERO_ADMITIDO`, `ALIMENTACION_INCLUIDA`, `AREA_INMUEBLE`, `ESTANCIA_MINIMA`, `NUM_HABITANTES`, `NUMERO_CELULAR`, `PRECIO_MENSUAL`, `TITULO_AVISO`, `DESCRIPCION`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
+(11, 'HABITACION', 1, 'COMPARTIDA', 0, 'TODOS', 1, 15, 3, 5, 3254896235, 500000, 'Habitacion compartida en arriendo', 'Habitacion en arriendo, amoblada, en zona residencial, con parqueadero y vigilancia', 1, '2019-11-23 04:13:38', '2019-11-23 04:13:38'),
+(12, 'HABITACION', 1, 'COMPARTIDA', 0, 'HOMBRES', 1, 20, 3, 5, 3162024789, 450000, 'Habitacion en arriendo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1, '2019-11-27 16:44:11', '2019-11-27 16:44:11'),
+(13, 'HABITACION', 1, 'INDIVIDUAL', 0, 'MUJERES', 1, 20, 0, 1, 2465564654, 450000, 'dfsa dsf as asfsadf dsfjsd fsdfdsfsfdkds ffdsfsdfdsf', '//variables por defecto para publicar articulo nuevo\n  resetVariables() {\n    this.ofertaNueva = {\n      PRECIO_MENSUAL: 0,\n      DESCRIPCION: \"\",\n      TITULO_AVISO: \"\",\n      FOTOS: [],\n      ...this.ofertaNueva\n    }\n\n    this.datosIncorrectos = false;\n    this.imagenPrincipalAgregada = false;', 1, '2019-11-27 16:52:07', '2019-11-27 16:52:07'),
+(14, 'HABITACION', 1, 'INDIVIDUAL', 1, 'MUJERES', 1, 20, 0, 1, 3162024789, 450000, 'habitacion en arriendo', 'fadsfsdf sdflkiuh fds n fdiol ujsfd kfljdsbdfl.k gfdh dfgbhño gffdg', 1, '2019-12-02 19:02:07', '2019-12-02 19:02:07'),
+(15, 'HABITACION', 1, 'INDIVIDUAL', 0, 'TODOS', 0, 20, 0, 1, 2465564654, 450000, 'habitacion en arriendo', 'Habitacion en arriendo en la calle central de montecristo', 9, '2019-12-18 15:53:06', '2019-12-18 15:53:06');
 
 -- --------------------------------------------------------
 
@@ -481,6 +315,7 @@ INSERT INTO `oferta_habitacion` (`ID`, `AMOBLADA`, `TIPO_HABITACION`, `BANIO_INT
 
 CREATE TABLE `oferta_pension` (
   `ID` int(11) NOT NULL,
+  `INMUEBLE` varchar(25) COLLATE utf8_bin NOT NULL DEFAULT 'PENSION',
   `HABITACIONES_DISPONIBLES` smallint(6) NOT NULL,
   `HABITACIONES_INDIVIDUALES` smallint(6) NOT NULL,
   `HABITACIONES_COMPARTIDAS` smallint(6) NOT NULL,
@@ -501,13 +336,13 @@ CREATE TABLE `oferta_pension` (
 -- Volcado de datos para la tabla `oferta_pension`
 --
 
-INSERT INTO `oferta_pension` (`ID`, `HABITACIONES_DISPONIBLES`, `HABITACIONES_INDIVIDUALES`, `HABITACIONES_COMPARTIDAS`, `NUM_HABITANTES`, `HABITACIONES_BANIO_INTERNO`, `GENERO_ADMITIDO`, `ALIMENTACION_INCLUIDA`, `PRECIO_MENSUAL`, `NUM_CELULAR`, `TITULO_AVISO`, `DESCRIPCION_AVISO`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(7, 2, 1, 2, 6, 0, 'TODOS', 1, 500000, 3456789098, 'Se buscan pensionados', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1, '2019-11-27 20:19:24', '2019-11-27 20:19:24'),
-(8, 2, 2, 0, 8, 2, 'TODOS', 1, 600000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'fda fds sd fdkjfdksl  bfksd ulb dfdsjb sdfklñiufdsliofds nflisd bfsdlf hdsfldsjh f9pauidfdhbfjds fdsfdsijhfusd fdsjfkds fdslfbdisfsdjfsd lifdslifhdsfsdnjfodis f sd fn dsfkjdsifdsjf', 1, '2019-11-27 23:35:07', '2019-11-27 23:35:07'),
-(9, 1, 0, 1, 2, 0, 'TODOS', 1, 450000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'afsdfs fsfd safd sf dgsdfg sfdg  dfgfdg dfgsdfgh thgfhf gfh jhjhjjhgjh gjgh hjhfgjh', 1, '2019-11-27 23:41:11', '2019-11-27 23:41:11'),
-(10, 1, 0, 1, 2, 1, 'MUJERES', 1, 450000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'a asdfsdafdsfsa iofdaf disafdoisfsaifudsj fsafdfdsaf adf dasf sdfdsfasafd', 1, '2019-11-27 23:42:31', '2019-11-27 23:42:31'),
-(13, 3, 2, 1, 1, 1, 'TODOS', 1, 850000, 3162024789, 'Se reciben pensionados', 'la mejor oferta del mercado', 1, '2019-12-02 19:11:40', '2019-12-02 19:11:40'),
-(14, 1, 1, 0, 3, 0, 'TODOS', 1, 450000, 2465564654, 'Se buscan pensionados', 'Pensión en cartagena, cerca al estadio y a la avenida', 9, '2019-12-18 16:00:01', '2019-12-18 16:00:01');
+INSERT INTO `oferta_pension` (`ID`, `INMUEBLE`, `HABITACIONES_DISPONIBLES`, `HABITACIONES_INDIVIDUALES`, `HABITACIONES_COMPARTIDAS`, `NUM_HABITANTES`, `HABITACIONES_BANIO_INTERNO`, `GENERO_ADMITIDO`, `ALIMENTACION_INCLUIDA`, `PRECIO_MENSUAL`, `NUM_CELULAR`, `TITULO_AVISO`, `DESCRIPCION_AVISO`, `USUARIO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
+(7, 'PENSION', 2, 1, 2, 6, 0, 'TODOS', 1, 500000, 3456789098, 'Se buscan pensionados', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 1, '2019-11-27 20:19:24', '2019-11-27 20:19:24'),
+(8, 'PENSION', 2, 2, 0, 8, 2, 'TODOS', 1, 600000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'fda fds sd fdkjfdksl  bfksd ulb dfdsjb sdfklñiufdsliofds nflisd bfsdlf hdsfldsjh f9pauidfdhbfjds fdsfdsijhfusd fdsjfkds fdslfbdisfsdjfsd lifdslifhdsfsdnjfodis f sd fn dsfkjdsifdsjf', 1, '2019-11-27 23:35:07', '2019-11-27 23:35:07'),
+(9, 'PENSION', 1, 0, 1, 2, 0, 'TODOS', 1, 450000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'afsdfs fsfd safd sf dgsdfg sfdg  dfgfdg dfgsdfgh thgfhf gfh jhjhjjhgjh gjgh hjhfgjh', 1, '2019-11-27 23:41:11', '2019-11-27 23:41:11'),
+(10, 'PENSION', 1, 0, 1, 2, 1, 'MUJERES', 1, 450000, 3162024789, 'adfsf sa fdsd ff dsdf sdf', 'a asdfsdafdsfsa iofdaf disafdoisfsaifudsj fsafdfdsaf adf dasf sdfdsfasafd', 1, '2019-11-27 23:42:31', '2019-11-27 23:42:31'),
+(13, 'PENSION', 3, 2, 1, 1, 1, 'TODOS', 1, 850000, 3162024789, 'Se reciben pensionados', 'la mejor oferta del mercado', 1, '2019-12-02 19:11:40', '2019-12-02 19:11:40'),
+(14, 'PENSION', 1, 1, 0, 3, 0, 'TODOS', 1, 450000, 2465564654, 'Se buscan pensionados', 'Pensión en cartagena, cerca al estadio y a la avenida', 9, '2019-12-18 16:00:01', '2019-12-18 16:00:01');
 
 -- --------------------------------------------------------
 
@@ -564,8 +399,6 @@ CREATE TABLE `servicio_especifico_has_oferta_casa_apto` (
 --
 
 INSERT INTO `servicio_especifico_has_oferta_casa_apto` (`ID`, `SERVICIO_ESPECIFICO_ID`, `OFERTA_CASA_APTO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 1, 1, '2019-10-20 23:21:16', '2019-10-20 23:21:16'),
-(2, 2, 1, '2019-10-20 23:21:16', '2019-10-20 23:21:16'),
 (4, 1, 5, '2019-11-08 20:18:37', '2019-11-08 20:18:37'),
 (5, 1, 6, '2019-11-08 21:08:57', '2019-11-08 21:08:57'),
 (6, 2, 6, '2019-11-08 21:08:57', '2019-11-08 21:08:57'),
@@ -639,73 +472,6 @@ INSERT INTO `servicio_especifico_has_oferta_pension` (`ID`, `SERVICIO_ESPECIFICO
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sub_categoria`
---
-
-CREATE TABLE `sub_categoria` (
-  `ID` int(11) NOT NULL,
-  `NOMBRE` varchar(45) COLLATE utf8_bin NOT NULL,
-  `CATEGORIA_ID` int(11) NOT NULL,
-  `ICONO` varchar(30) COLLATE utf8_bin NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `sub_categoria`
---
-
-INSERT INTO `sub_categoria` (`ID`, `NOMBRE`, `CATEGORIA_ID`, `ICONO`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'MATEMATICAS', 1, 'fa-snowflake', '2019-10-19 22:48:24', '2019-10-19 22:48:24'),
-(3, 'CONTADURIA', 1, 'fa-snowflake', '2019-10-19 22:51:01', '2019-10-19 22:51:01'),
-(4, 'INFORMATICA', 1, 'fa-snowflake', '2019-10-19 22:58:37', '2019-10-19 22:58:37'),
-(5, 'OTROS', 2, 'fa-ascensor', '2019-11-04 20:42:33', '2019-11-04 20:42:33');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ubicacion_oferta_articulo`
---
-
-CREATE TABLE `ubicacion_oferta_articulo` (
-  `ID` int(11) NOT NULL,
-  `PAIS` varchar(25) COLLATE utf8_bin NOT NULL,
-  `DEPARTAMENTO` varchar(25) COLLATE utf8_bin DEFAULT NULL,
-  `CIUDAD` varchar(25) COLLATE utf8_bin DEFAULT NULL,
-  `LOCALIDAD` varchar(25) COLLATE utf8_bin DEFAULT NULL,
-  `OFERTA_ARTICULO_ID` int(11) NOT NULL,
-  `CREADO_EN` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ACTUALIZADO_EN` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `ubicacion_oferta_articulo`
---
-
-INSERT INTO `ubicacion_oferta_articulo` (`ID`, `PAIS`, `DEPARTAMENTO`, `CIUDAD`, `LOCALIDAD`, `OFERTA_ARTICULO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'COLOMBIA', 'BOLIVAR', 'CARTAGENA', NULL, 1, '2019-10-20 03:06:41', '2019-10-20 03:06:41'),
-(2, 'COLOMBIA', 'BOLIVAR', 'MAGANGUE', NULL, 2, '2019-10-20 03:07:22', '2019-10-20 03:07:22'),
-(3, 'COLOMBIA', 'BOLIVAR', 'MONTECRISTO', NULL, 3, '2019-10-20 03:07:37', '2019-10-20 03:07:37'),
-(5, 'COLOMBIA', 'BOLIVAR', 'MONTECRISTO', NULL, 7, '2019-10-20 03:31:24', '2019-10-20 03:31:24'),
-(7, 'COLOMBIA', 'BOLIVAR', 'MAGANGUE', NULL, 9, '2019-11-03 17:08:00', '2019-11-03 17:08:00'),
-(8, 'COLOMBIA', 'BOLIVAR', 'MAGANGUE', NULL, 10, '2019-11-03 17:14:40', '2019-11-03 17:14:40'),
-(9, 'COLOMBIA', 'BOLIVAR', 'MAGANGUE', NULL, 11, '2019-11-03 17:17:26', '2019-11-03 17:17:26'),
-(11, 'Colombia', 'Valle del Cauca', 'Cali', NULL, 13, '2019-11-05 03:28:56', '2019-11-05 03:28:56'),
-(12, 'COLOMBIA', 'BOLÍVAR', 'MONTECRISTO', 'LA DORADA', 14, '2019-11-05 03:37:35', '2019-11-05 03:37:35'),
-(13, 'COLOMBIA', 'VALLE DEL CAUCA', 'PALMIRA', NULL, 15, '2019-11-07 18:07:12', '2019-11-07 18:07:12'),
-(14, 'COLOMBIA', 'VALLE DEL CAUCA', 'GUADALAJARA DE BUGA', NULL, 16, '2019-11-08 16:43:45', '2019-11-08 16:43:45'),
-(15, 'COLOMBIA', 'VALLE DEL CAUCA', 'CARTAGO', NULL, 17, '2019-11-08 16:54:04', '2019-11-08 16:54:04'),
-(16, 'COLOMBIA', 'SANTANDER', 'BUCARAMANGA', NULL, 18, '2019-11-08 16:59:56', '2019-11-08 16:59:56'),
-(17, 'COLOMBIA', 'ATLÁNTICO', 'SOLEDAD', NULL, 19, '2019-11-08 17:08:56', '2019-11-08 17:08:56'),
-(18, 'COLOMBIA', 'ATLÁNTICO', 'SOLEDAD', NULL, 20, '2019-11-08 17:11:06', '2019-11-08 17:11:06'),
-(19, 'COLOMBIA', 'CAQUETÁ', 'CARTAGENA DEL CHAIRÁ', NULL, 21, '2019-11-08 17:12:52', '2019-11-08 17:12:52'),
-(20, 'COLOMBIA', 'NORTE DE SANTANDER', 'CÚCUTA', NULL, 23, '2019-11-08 17:17:08', '2019-11-08 17:17:08'),
-(21, 'COLOMBIA', 'NORTE DE SANTANDER', 'CÚCUTA', NULL, 24, '2019-11-08 17:17:56', '2019-11-08 17:17:56'),
-(22, 'COLOMBIA', 'BOLÍVAR', 'MONTECRISTO', NULL, 25, '2019-12-18 15:33:49', '2019-12-18 15:33:49');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `ubicacion_oferta_casa_apto`
 --
 
@@ -729,7 +495,6 @@ CREATE TABLE `ubicacion_oferta_casa_apto` (
 --
 
 INSERT INTO `ubicacion_oferta_casa_apto` (`ID`, `PAIS`, `DEPARTAMENTO`, `CIUDAD`, `LOCALIDAD`, `DIRECCION`, `CODIGO_POSTAL`, `LATITUD`, `LONGITUD`, `OFERTA_CASA_APTO_ID`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'COLOMBIA', 'BOLÍVAR', 'PROVINCIA DE CARTAGENA', NULL, 'calle 31a #4-77', 130001, 10.412478619147501, -75.51712274551393, 1, '2019-10-20 21:48:42', '2019-10-20 21:48:42'),
 (5, 'COLOMBIA', 'BOLÍVAR', 'MAGANGUÉ', NULL, 'calle 13b #33', 130005, 9.251860666763683, -74.76554632186891, 5, '2019-11-08 20:18:36', '2019-11-08 20:18:36'),
 (6, 'COLOMBIA', 'BOLÍVAR', 'MAGANGUÉ', NULL, 'calle 13b #33', 130005, 9.23987341325684, -74.75258588790895, 6, '2019-11-08 21:08:56', '2019-11-08 21:08:56'),
 (7, 'COLOMBIA', 'BOLÍVAR', 'PROVINCIA DE CARTAGENA', 'CARTAGENA', '90A #38-131, Cartagena, Provincia de Cartagena, Bolívar, Colombia', 130004, 10.402981535057368, -75.51639318466188, 7, '2019-11-18 23:32:40', '2019-11-18 23:32:40'),
@@ -832,7 +597,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `CONTRASENIA`, `ID_TOKEN`, `FOTO`, `CREADO_EN`, `ACTUALIZADO_EN`) VALUES
-(1, 'Edwin junior', 'guerrero acosta', 'eguerreroa1@gmail.com', '30785fd70e0e325470e2106a3eacfe0e', 'a0672ec10073429eb697dc99152494e0', '097p8pgs4s.webp', '2019-10-06 18:56:24', '2019-12-04 20:23:59'),
+(1, 'Edwin junior', 'guerrero acosta', 'eguerreroa1@gmail.com', '30785fd70e0e325470e2106a3eacfe0e', '2319606f1b127d5e185935d99943c09c', '097p8pgs4s.webp', '2019-10-06 18:56:24', '2020-02-22 18:08:54'),
 (3, 'juan ignacio', 'dinneno de cara', 'jdinnenoc1@gmail.com', '4dce53b6364e4e4c0458d71fa0e731f4', NULL, 'ql9okyxg1j.webp', '2019-10-06 21:35:15', '2019-10-31 23:54:37'),
 (7, 'Edwin alberto', 'Guerrero acosta', 'eguerreroa2@gmail.com', '47f5fbb77d25045524e16d8415974df5', 'e2e2dead5cd6a94fa0df433faf19a2a8', 'avatar.png', '2019-10-14 04:04:52', '2019-11-02 02:01:39'),
 (8, 'Edwin alberto', 'Guerrero Acosta', 'eguerreroa@gmail.com', '30785fd70e0e325470e2106a3eacfe0e', '17ed1a1eefce9187f65be2a295a3f4b3', 'avatar.png', '2019-12-18 14:37:28', '2019-12-18 14:43:19'),
@@ -841,28 +606,6 @@ INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `CONTRASENIA`, `ID_
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `NOMBRE` (`NOMBRE`);
-
---
--- Indices de la tabla `conversacion`
---
-ALTER TABLE `conversacion`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_CONVERSACION_USUARIO1` (`USUARIO_ID`),
-  ADD KEY `fk_CONVERSACION_USUARIO_RECEPTOR1` (`ID_USUARIO_RECEPTOR`);
-
---
--- Indices de la tabla `foto_articulo`
---
-ALTER TABLE `foto_articulo`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_FOTO_ARTICULO_OFERTA_ARTICULO1` (`OFERTA_ARTICULO_ID`);
 
 --
 -- Indices de la tabla `foto_casa_apto`
@@ -886,13 +629,6 @@ ALTER TABLE `foto_pension`
   ADD KEY `fk_FOTO_PENSION_OFERTA_PENSION1` (`OFERTA_PENSION_ID`);
 
 --
--- Indices de la tabla `mensaje`
---
-ALTER TABLE `mensaje`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_MENSAJE_CONVERSACION1` (`CONVERSACION_ID`);
-
---
 -- Indices de la tabla `norma_casa`
 --
 ALTER TABLE `norma_casa`
@@ -914,14 +650,6 @@ ALTER TABLE `norma_casa_has_oferta_pension`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_NORMA_CASA_has_OFERTA_PENSION_NORMA_CASA1` (`NORMA_CASA_ID`),
   ADD KEY `fk_NORMA_CASA_has_OFERTA_PENSION_OFERTA_PENSION1` (`OFERTA_PENSION_ID`);
-
---
--- Indices de la tabla `oferta_articulo`
---
-ALTER TABLE `oferta_articulo`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_OFERTA_ARTICULO_USUARIO1` (`USUARIO_ID`),
-  ADD KEY `fk_OFERTA_ARTICULO_SUB_CATEGORIA1` (`SUB_CATEGORIA_ID`);
 
 --
 -- Indices de la tabla `oferta_casa_apto`
@@ -983,21 +711,6 @@ ALTER TABLE `servicio_especifico_has_oferta_pension`
   ADD KEY `fk_SERVICIO_ESPECIFICO_has_OFERTA_PENSION_OFERTA_PENSIO1` (`OFERTA_PENSION_ID`);
 
 --
--- Indices de la tabla `sub_categoria`
---
-ALTER TABLE `sub_categoria`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `NOMBRE` (`NOMBRE`),
-  ADD KEY `fk_SUB_CATEGORIA_CATEGORIA1` (`CATEGORIA_ID`);
-
---
--- Indices de la tabla `ubicacion_oferta_articulo`
---
-ALTER TABLE `ubicacion_oferta_articulo`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `OFERTA_ARTICULO_ID` (`OFERTA_ARTICULO_ID`);
-
---
 -- Indices de la tabla `ubicacion_oferta_casa_apto`
 --
 ALTER TABLE `ubicacion_oferta_casa_apto`
@@ -1031,24 +744,6 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `conversacion`
---
-ALTER TABLE `conversacion`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `foto_articulo`
---
-ALTER TABLE `foto_articulo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
 -- AUTO_INCREMENT de la tabla `foto_casa_apto`
 --
 ALTER TABLE `foto_casa_apto`
@@ -1067,12 +762,6 @@ ALTER TABLE `foto_pension`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT de la tabla `mensaje`
---
-ALTER TABLE `mensaje`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `norma_casa`
 --
 ALTER TABLE `norma_casa`
@@ -1089,12 +778,6 @@ ALTER TABLE `norma_casa_has_oferta_habitacion`
 --
 ALTER TABLE `norma_casa_has_oferta_pension`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `oferta_articulo`
---
-ALTER TABLE `oferta_articulo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta_casa_apto`
@@ -1118,7 +801,7 @@ ALTER TABLE `oferta_pension`
 -- AUTO_INCREMENT de la tabla `reset_password`
 --
 ALTER TABLE `reset_password`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_especifico`
@@ -1143,18 +826,6 @@ ALTER TABLE `servicio_especifico_has_oferta_habitacion`
 --
 ALTER TABLE `servicio_especifico_has_oferta_pension`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `sub_categoria`
---
-ALTER TABLE `sub_categoria`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `ubicacion_oferta_articulo`
---
-ALTER TABLE `ubicacion_oferta_articulo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `ubicacion_oferta_casa_apto`
@@ -1185,19 +856,6 @@ ALTER TABLE `usuario`
 --
 
 --
--- Filtros para la tabla `conversacion`
---
-ALTER TABLE `conversacion`
-  ADD CONSTRAINT `fk_CONVERSACION_USUARIO1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuario` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_CONVERSACION_USUARIO_RECEPTOR1` FOREIGN KEY (`ID_USUARIO_RECEPTOR`) REFERENCES `usuario` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `foto_articulo`
---
-ALTER TABLE `foto_articulo`
-  ADD CONSTRAINT `fk_FOTO_ARTICULO_OFERTA_ARTICULO1` FOREIGN KEY (`OFERTA_ARTICULO_ID`) REFERENCES `oferta_articulo` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `foto_casa_apto`
 --
 ALTER TABLE `foto_casa_apto`
@@ -1216,12 +874,6 @@ ALTER TABLE `foto_pension`
   ADD CONSTRAINT `fk_FOTO_PENSION_OFERTA_PENSION1` FOREIGN KEY (`OFERTA_PENSION_ID`) REFERENCES `oferta_pension` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `mensaje`
---
-ALTER TABLE `mensaje`
-  ADD CONSTRAINT `fk_MENSAJE_CONVERSACION1` FOREIGN KEY (`CONVERSACION_ID`) REFERENCES `conversacion` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `norma_casa_has_oferta_habitacion`
 --
 ALTER TABLE `norma_casa_has_oferta_habitacion`
@@ -1234,13 +886,6 @@ ALTER TABLE `norma_casa_has_oferta_habitacion`
 ALTER TABLE `norma_casa_has_oferta_pension`
   ADD CONSTRAINT `fk_NORMA_CASA_has_OFERTA_PENSION_NORMA_CASA1` FOREIGN KEY (`NORMA_CASA_ID`) REFERENCES `norma_casa` (`ID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_NORMA_CASA_has_OFERTA_PENSION_OFERTA_PENSION1` FOREIGN KEY (`OFERTA_PENSION_ID`) REFERENCES `oferta_pension` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `oferta_articulo`
---
-ALTER TABLE `oferta_articulo`
-  ADD CONSTRAINT `fk_OFERTA_ARTICULO_SUB_CATEGORIA1` FOREIGN KEY (`SUB_CATEGORIA_ID`) REFERENCES `sub_categoria` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_OFERTA_ARTICULO_USUARIO1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuario` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `oferta_casa_apto`
@@ -1280,18 +925,6 @@ ALTER TABLE `servicio_especifico_has_oferta_habitacion`
 ALTER TABLE `servicio_especifico_has_oferta_pension`
   ADD CONSTRAINT `fk_SERVICIO_ESPECIFICO_has_OFERTA_PENSION_OFERTA_PENSIO1` FOREIGN KEY (`OFERTA_PENSION_ID`) REFERENCES `oferta_pension` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_SERVICIO_ESPECIFICO_has_OFERTA_PENSION_SERVICIO_ESPE1` FOREIGN KEY (`SERVICIO_ESPECIFICO_ID`) REFERENCES `servicio_especifico` (`ID`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `sub_categoria`
---
-ALTER TABLE `sub_categoria`
-  ADD CONSTRAINT `fk_SUB_CATEGORIA_CATEGORIA1` FOREIGN KEY (`CATEGORIA_ID`) REFERENCES `categoria` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ubicacion_oferta_articulo`
---
-ALTER TABLE `ubicacion_oferta_articulo`
-  ADD CONSTRAINT `ubicacion_oferta_articulo_ibfk_1` FOREIGN KEY (`OFERTA_ARTICULO_ID`) REFERENCES `oferta_articulo` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ubicacion_oferta_casa_apto`
